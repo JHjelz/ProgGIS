@@ -3,11 +3,37 @@
     <head>
         <title>ProgGIS</title>
         <style>
-
+            .h1 {
+                text-align: center;
+                font-weight: bold;
+                font-family: monospace;
+            }
+            .button {
+                font-family: monospace;
+                background-color: greenyellow;
+                color: white;
+                border-width: 0;
+                cursor: pointer;
+            }
+            #box1 {
+                font-family: monospace;
+                height: 6vh;
+                display: flex;
+                flex-grow: 4;
+                flex-direction: row;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
-        <h1 style="text-align: center; font-weight: bold; font-family: monospace;">ProgGIS</h1>
-        <p>This is a GitLab page :)</p>
+        <div style="height: 20vh; width: 100vw; background-color: greenyellow;">
+            <h1 style="height: 14vh; color: white;">ProgGIS</h1>
+            <div id="box1">
+                <button>Buffer</button>
+                <button>Union</button>
+                <button>Intersection</button>
+                <button>Difference</button>
+            </div>
+        </div>
     </body>
 </html>
