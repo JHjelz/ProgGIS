@@ -10,9 +10,9 @@
             }
             .button {
                 font-family: monospace;
-                background-color: greenyellow;
+                background-color: lightgreen;
                 color: white;
-                border-width: 0;
+                border-color: lightgreen;
                 cursor: pointer;
             }
             #box1 {
@@ -21,19 +21,20 @@
                 display: flex;
                 flex-grow: 4;
                 flex-direction: row;
-                text-align: center;
+                align-items: center;
             }
         </style>
     </head>
     <body>
-        <div style="height: 20vh; width: 100vw; background-color: greenyellow;">
-            <h1 style="height: 14vh; color: white;">ProgGIS</h1>
+        <div style="height: 20vh; width: 100vw; background-color: orange; align-items: center;">
+            <h1 style="height: 14vh; color: white; font-size: 12vh;">ProgGIS</h1>
             <div id="box1">
-                <button>Buffer</button>
-                <button>Union</button>
-                <button>Intersection</button>
-                <button>Difference</button>
+                <button style="padding-left: 2vw; padding-right: 2vw;">Buffer</button>
+                <button style="padding-left: 2vw; padding-right: 2vw;">Union</button>
+                <button style="padding-left: 2vw; padding-right: 2vw;">Intersection</button>
+                <button style="padding-left: 2vw; padding-right: 2vw;">Difference</button>
             </div>
         </div>
+        <div style="height: 80vh; width: 100vw;"></div>
     </body>
 </html>
