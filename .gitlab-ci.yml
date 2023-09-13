@@ -1,10 +1,6 @@
-deploy_staging:
-  stage: deploy
-  script:
-    - echo "Deploy to staging server"
-  environment:
-    name: staging
-    url: https://jshjelse.pages.stud.idi.ntnu.no/proggis/
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
 
 pages:
   stage: deploy
@@ -15,6 +11,6 @@ pages:
   artifacts:
     paths:
     - public
-  only:
-  - main
-  
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  environment: production
