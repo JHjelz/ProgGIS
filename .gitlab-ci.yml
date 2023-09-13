@@ -1,11 +1,3 @@
-deploy_staging:
-  stage: deploy
-  script:
-    - echo "Deploy to staging server"
-  environment:
-    name: staging
-    url: https://jshjelse.pages.stud.idi.ntnu.no/proggis/
-
 pages:
   stage: deploy
   script:
@@ -17,4 +9,3 @@ pages:
     - public
   only:
   - main
-  
