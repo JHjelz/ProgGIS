@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ProgGIS</title>
+        <style>
+            .box {
+                font-family: monospace;
+                background-color: orange;
+                color: white;
+                border-color: orangered;
+                border-style: solid;
+                border-width: 0px;
+                border-radius: 20px;
+                width: 0;
+                height: 0;
+                margin-top: 15vh;
+                margin-left: 30vw;
+                position: fixed;
+                z-index: 999;
+                overflow-x: hidden;
+                text-align: center;
+            }
+            .box1 {
+                display: flex;
+                flex-grow: 5;
+                flex-direction: row;
+            }
+            .box2 {
+                display: flex;
+                flex-grow: 3;
+                flex-direction: row;
+            }
+            .box3 {
+                display: flex;
+                flex-grow: 2;
+                flex-direction: row;
+            }
+            .button {
+                font-family: monospace;
+                font-weight: bolder;
+                background-color: orangered;
+                color: white;
+                border: 0;
+                cursor: pointer;
+                padding-left: 2vw;
+                padding-right: 2vw;
+                margin-left: 2vw;
+                margin-right: 2vw;
+                margin-top: 0.5vh;
+                margin-bottom: 0.5vh;
+            }
+            .sidebar {
+                background-color: orangered;
+                color: white;
+                font-family: monospace;
+                position: fixed;
+                z-index: 999;
+                width: 0vw;
+                height: 80vh;
+                overflow-x: hidden;
+                transition: 0.5s;
+            }
+        </style>
+    </head>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <body style="margin: 0;">
+        <div class="box2" style="height: 20vh; background-color: orange; color: white; font-family: monospace;">
+            <div style="padding-left: 2vh; padding-top: 2vh;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16vh" height="16vh" fill="currentColor" class="bi bi-globe-europe-africa" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM3.668 2.501l-.288.646a.847.847 0 0 0 1.479.815l.245-.368a.809.809 0 0 1 1.034-.275.809.809 0 0 0 .724 0l.261-.13a1 1 0 0 1 .775-.05l.984.34c.078.028.16.044.243.054.784.093.855.377.694.801-.155.41-.616.617-1.035.487l-.01-.003C8.274 4.663 7.748 4.5 6 4.5 4.8 4.5 3.5 5.62 3.5 7c0 1.96.826 2.166 1.696 2.382.46.115.935.233 1.304.618.449.467.393 1.181.339 1.877C6.755 12.96 6.674 14 8.5 14c1.75 0 3-3.5 3-4.5 0-.262.208-.468.444-.7.396-.392.87-.86.556-1.8-.097-.291-.396-.568-.641-.756-.174-.133-.207-.396-.052-.551a.333.333 0 0 1 .42-.042l1.085.724c.11.072.255.058.348-.035.15-.15.415-.083.489.117.16.43.445 1.05.849 1.357L15 8A7 7 0 1 1 3.668 2.501Z"/>
+                </svg>
+            </div>
+            <div style="display: flex; flex-grow: 2; flex-direction: column;">
+                <h1 style="margin: 0; padding: 0; text-align: center; font-size: 12vh;">ProgGIS</h1>
+                <div class="box1">
+                    <p style="width: 17vw;"></p>
+                    <button class="button" onclick="openBox('bufferBox')">Buffer</button>
+                    <button class="button" onclick="openBox('intersectionBox')">Intersection</button>
+                    <button class="button" onclick="openBox('unionBox')">Union</button>
+                    <button class="button" onclick="openBox('differenceBox')">Difference</button>
+                </div>
+            </div>
+            <div style="padding-right: 2vh; padding-top: 2vh;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16vh" height="16vh" fill="currentColor" class="bi bi-globe-asia-australia" viewBox="0 0 16 16">
+                    <path d="m10.495 6.92 1.278-.619a.483.483 0 0 0 .126-.782c-.252-.244-.682-.139-.932.107-.23.226-.513.373-.816.53l-.102.054c-.338.178-.264.626.1.736a.476.476 0 0 0 .346-.027ZM7.741 9.808V9.78a.413.413 0 1 1 .783.183l-.22.443a.602.602 0 0 1-.12.167l-.193.185a.36.36 0 1 1-.5-.516l.112-.108a.453.453 0 0 0 .138-.326ZM5.672 12.5l.482.233A.386.386 0 1 0 6.32 12h-.416a.702.702 0 0 1-.419-.139l-.277-.206a.302.302 0 1 0-.298.52l.761.325Z"/>
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM1.612 10.867l.756-1.288a1 1 0 0 1 1.545-.225l1.074 1.005a.986.986 0 0 0 1.36-.011l.038-.037a.882.882 0 0 0 .26-.755c-.075-.548.37-1.033.92-1.099.728-.086 1.587-.324 1.728-.957.086-.386-.114-.83-.361-1.2-.207-.312 0-.8.374-.8.123 0 .24-.055.318-.15l.393-.474c.196-.237.491-.368.797-.403.554-.064 1.407-.277 1.583-.973.098-.391-.192-.634-.484-.88-.254-.212-.51-.426-.515-.741a6.998 6.998 0 0 1 3.425 7.692 1.015 1.015 0 0 0-.087-.063l-.316-.204a1 1 0 0 0-.977-.06l-.169.082a1 1 0 0 1-.741.051l-1.021-.329A1 1 0 0 0 11.205 9h-.165a1 1 0 0 0-.945.674l-.172.499a1 1 0 0 1-.404.514l-.802.518a1 1 0 0 0-.458.84v.455a1 1 0 0 0 1 1h.257a1 1 0 0 1 .542.16l.762.49a.998.998 0 0 0 .283.126 7.001 7.001 0 0 1-9.49-3.409Z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="dataLayers" class="sidebar">
+            <div style="display: flex; flex-grow: 2; flex-direction: row;">
+                <div style="width: 20vw; padding-left: 10px;">
+                    <h1 style="font-size: 2vw;">Data layers</h1>
+                </div>
+                <svg onclick="closeNav()" style="padding-top: 1vh; padding-right: 1vw; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="4vw" height="4vw" fill="white" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+            </div>
+            <p>Hei på deg</p>
+        </div>
+        <div id="map" style="position: relative; z-index: 1; height: 80vh;">
+            <div style="display: flex; flex-grow: 2; flex-direction: column;">
+                <div style="height: 72vh;">
+                    <div id="bufferBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Buffer</h1>
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('bufferBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="intersectionBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Intersection</h1>
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('intersectionBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="unionBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Union</h1>
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('unionBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="differenceBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Difference</h1>
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('differenceBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="tutorialBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Tutorial</h1>
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('tutorialBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                        <textarea style="margin: 2vw; padding: 5px; background-color: white; border-color: black;
+                        border-width: 2px; color: black; height: 18vh; width: 35vw; text-align: left;">
+Legg til piler på hver side av 'Tutorial' for å navigere rundt blant de ulike tutorialene.
+                        </textarea>
+                    </div>
+                </div>
+                <div style="display: flex; flex-grow: 3; flex-direction: row;">
+                    <div style="padding-left: 2vw;">
+                        <svg style="cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="openNav()"
+                        xmlns="http://www.w3.org/2000/svg" width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                    </div>
+                    <div style="width: 95vw;"></div>
+                    <div style="padding-right: 2vw;">
+                        <svg style="cursor: pointer; border: none; position: relative; color: orangered; z-index: 999;" onclick="openBox('tutorialBox')"
+                        xmlns="http://www.w3.org/2000/svg" width="6vh" height="6v" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript">
+    
+    var boolskNav = false; /* boolsk verdi som forteller om en sidebar er åpen foran kartet */
+    var boolskBox = false; /* boolsk verdi som forteller om en boks er åpen foran kartet */
+    var box = null; /* Streng som forteller hvilken boks-id som er åpen */
+
+    // Bestemme URL til basiskartet:
+    var osm_map = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright"<OpenStreetMap</a> contributors'
+    });
+
+    // Initialiserer kartet:
+    var map = L.map('map', {
+        layers: [osm_map], // Default basiskart
+        maxZoom: 18, // Justerer zoom-nivået
+        minZoom: 6,
+        zoomControl: false, // Fjerner default zoom-knapper
+    }).setView([63.418529, 10.40284], 13)
+
+    // Legger til zoom-knapper på egnet sted
+    L.control.zoom({
+        position:'topright'
+    }).addTo(map);
+
+    /* Activate and deactivate interactions in the leaflet map*/
+
+    function deactivateMap() {
+        map._handlers.forEach(function(handler) {
+            handler.disable();
+        });
+    }
+
+    function activateMap() {
+        map._handlers.forEach(function(handler) {
+            handler.enable();
+        });
+    }
+
+    /* Set the width of the sidebar to 25vw */
+    function openNav() {
+        if (boolskBox) {
+            closeBox(box);
+        }
+        document.getElementById("dataLayers").style.width = "25vw";
+        boolskNav = true;
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("dataLayers").style.width = "0vw";
+        boolskNav = false;
+    }
+
+    function openBox(id) {
+        if (boolskBox) {
+            closeBox(box)
+        }
+        if (boolskNav) {
+            closeNav();
+        }
+        document.getElementById(String(id)).style.width = "40vw";
+        document.getElementById(String(id)).style.height = "40vh";
+        document.getElementById(String(id)).style.borderWidth = "20px";
+        boolskBox = true;
+        box = id;
+        deactivateMap();
+    }
+
+    function closeBox(id) {
+        document.getElementById(String(id)).style.width = "0vw";
+        document.getElementById(String(id)).style.height = "0vh";
+        document.getElementById(String(id)).style.borderWidth = "0px";
+        boolskBox = false;
+        box = null;
+        activateMap();
+    }
+
+</script>
