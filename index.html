@@ -51,84 +51,86 @@
         </div>
         
         <div id="map" style="position: relative; z-index: 1; height: 80vh;">
-            <div style="display: flex; flex-grow: 2; flex-direction: column;">
-                <div style="height: 72vh;">
-                    <div id="bufferBox" class="box">
-                        <div class="box3">
-                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Buffer</h1>
+            <div id="drop_zone">
+                <div style="display: flex; flex-grow: 2; flex-direction: column;">
+                    <div style="height: 72vh;">
+                        <div id="bufferBox" class="box">
+                            <div class="box3">
+                                <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Buffer</h1>
+                                
+                                <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('bufferBox')"
+                                xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div id="intersectionBox" class="box">
+                            <div class="box3">
+                                <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Intersection</h1>
+                                
+                                <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('intersectionBox')"
+                                xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div id="unionBox" class="box">
+                            <div class="box3">
+                                <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Union</h1>
+                                
+                                <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('unionBox')"
+                                xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div id="differenceBox" class="box">
+                            <div class="box3">
+                                <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Difference</h1>
+                                
+                                <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('differenceBox')"
+                                xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div id="tutorialBox" class="box">
+                            <div class="box3">
+                                <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Tutorial</h1>
+                                
+                                <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('tutorialBox')"
+                                xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                </svg>
+                            </div>
                             
-                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('bufferBox')"
-                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                            </svg>
+                            <textarea style="margin: 2vw; padding: 5px; background-color: white; border-color: black;
+                            border-width: 2px; color: black; height: 18vh; width: 35vw; text-align: left;">
+    Legg til piler på hver side av 'Tutorial' for å navigere rundt blant de ulike tutorialene.
+                            </textarea>
                         </div>
                     </div>
 
-                    <div id="intersectionBox" class="box">
-                        <div class="box3">
-                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Intersection</h1>
-                            
-                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('intersectionBox')"
-                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                    <div class="box2">
+                        <div style="padding-left: 2vw;">
+                            <svg style="cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="openNav()"
+                            xmlns="http://www.w3.org/2000/svg" width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg>
                         </div>
-                    </div>
 
-                    <div id="unionBox" class="box">
-                        <div class="box3">
-                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Union</h1>
-                            
-                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('unionBox')"
-                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div id="differenceBox" class="box">
-                        <div class="box3">
-                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Difference</h1>
-                            
-                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('differenceBox')"
-                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div id="tutorialBox" class="box">
-                        <div class="box3">
-                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Tutorial</h1>
-                            
-                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('tutorialBox')"
-                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                            </svg>
-                        </div>
+                        <div style="width: 95vw;"></div>
                         
-                        <textarea style="margin: 2vw; padding: 5px; background-color: white; border-color: black;
-                        border-width: 2px; color: black; height: 18vh; width: 35vw; text-align: left;">
-Legg til piler på hver side av 'Tutorial' for å navigere rundt blant de ulike tutorialene.
-                        </textarea>
-                    </div>
-                </div>
-
-                <div class="box2">
-                    <div style="padding-left: 2vw;">
-                        <svg style="cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="openNav()"
-                        xmlns="http://www.w3.org/2000/svg" width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                        </svg>
-                    </div>
-
-                    <div style="width: 95vw;"></div>
-                    
-                    <div style="padding-right: 2vw;">
-                        <svg style="cursor: pointer; border: none; position: relative; color: orangered; z-index: 999;" onclick="openBox('tutorialBox')"
-                        xmlns="http://www.w3.org/2000/svg" width="6vh" height="6v" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                        </svg>
+                        <div style="padding-right: 2vw;">
+                            <svg style="cursor: pointer; border: none; position: relative; color: orangered; z-index: 999;" onclick="openBox('tutorialBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="6vh" height="6v" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,3 +140,4 @@ Legg til piler på hver side av 'Tutorial' for å navigere rundt blant de ulike 
 
 <script src="javascript/map.js"></script>
 <script src="javascript/sidebar&boxes.js"></script>
+<script src="javascript/dropFiles.js"></script>
