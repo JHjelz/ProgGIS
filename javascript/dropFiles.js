@@ -1,29 +1,29 @@
 function dropHandler(event) {
-    console.log("File(s) dropped");
-
-    // Unngå at filene åpnes som default:
     event.preventDefault();
+    event.stopPropagation();
 
     if (event.dataTransfer.items) {
-        // Bruker DataTransferItemList grensesnittet for å aksessere filen(e):
+        // Use DataTransferItemList interface to access the file(s)
         [...event.dataTransfer.items].forEach((item, i) => {
-            // Hvis droppet element ikke er en fil, avvis den:
-            if (item.kind === "file") {
-                const file = item.getAsFile();
-                console.log('... file[${i}].name =${file.name}');
-            }
+          // If dropped items aren't files, reject them
+          if (item.kind === "file") {
+            const file = item.getAsFile();
+            let layer = file.name;
+            document.getElementById("layers").innerHTML = layer;
+            console.log(`… file[${i}].name = ${file.name}`);
+          }
         });
     } else {
-        // Bruk DataTransfer grensesnittet for å aksessere filen(e):
+        // Use DataTransfer interface to access the file(s)
         [...event.dataTransfer.files].forEach((file, i) => {
-            console.log('... file[${i}].name = ${file.name}');
+            let layer = file.name;
+            document.getElementById("layers").innerHTML = layer;
+            console.log(`… file[${i}].name = ${file.name}`);
         });
     }
 }
 
 function dragOverHandler(event) {
-    console.log("File(s) in drop zone");
-
-    // Unngå at filene åpnes som default:
     event.preventDefault();
+    event.stopPropagation();
 }

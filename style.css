@@ -41,6 +41,19 @@
     flex-direction: row;
 }
 
+.dropBox {
+    font-family: monospace;
+    font-size: larger;
+    width: 20vw;
+    text-align: center;
+    border-color: white;
+    border-style: dotted;
+    border-width: 5px;
+    border-radius: 10px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
 .button {
     font-family: monospace;
     font-weight: bolder;
