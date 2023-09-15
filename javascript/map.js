@@ -29,7 +29,7 @@ L.control.zoom({
 var baselayers = {
     "OpenStreetMap": osm_map,
     "Satellite": googleSat
-};
+}
 
 L.control.layers(baselayers).addTo(map)
 
