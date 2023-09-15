@@ -7,7 +7,8 @@ function clickMe() {
 
 dialog.addEventListener("input", () => {
     if (dialog.files.length) {
-        let text = dialog.files[0].name;
-        document.getElementById("layers").innerHTML = text;
+        for (i = 0; i < dialog.files.length; i++) {
+            document.getElementById("layers").innerHTML = dialog.files[i].name;
+        }
     }
 });
