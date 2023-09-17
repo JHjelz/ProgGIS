@@ -8,25 +8,9 @@ function clickMe() {
 dialog.addEventListener("input", () => {
     if (dialog.files.length) {
         for (i = 0; i < dialog.files.length; i++) {
-            document.getElementById("layers").innerHTML = dialog.files[i].name;
+            var file = shp(dialog.files[i].name);
+            L.geoJSON().addData(file).addTo(map);
+            document.getElementById("layers").innerHTML += "Hei!";
         }
     }
-});
-
-var geo = L.geoJson({features:[]}, {
-    onEachFeature: function popUp(f, l) {
-    var out = [];
-    if (f.properties){
-    for(var key in f.properties){
-        out.push(key + ": " + f.properties[key]);
-    }
-    l.bindPopup(out.join("<br />"));
-    }
-}
-}).addTo(map);
-  
-var base = 'vann.zip';
-
-shp(base).then(function(data){
-    geo.addData(data);
 });
