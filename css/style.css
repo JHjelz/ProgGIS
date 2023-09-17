@@ -68,11 +68,11 @@
     transition: 0.5s;
 }
 
-#dialog {
+#fileSelect {
     display: none;
 }
 
-#clickOpen {
+#onClick {
     font-family: monospace;
     font-size: larger;
     background-color: orangered;
