@@ -47,8 +47,15 @@
             </div>
 
             <div style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;">
-                <input type="file" accept=".zip" none="dialog" id="fileSelect">
-                <button id="onClick" onclick="clickMe()">Click here to open new layers</button>
+                <input type="file" accept=".zip" none="dialog" id="fileInput">
+                <div class="box3">
+                    <button class="onClick" onclick="clickMe()">Click here to choose a new layer</button>
+
+                    <svg onclick="handleFile()" style="cursor: pointer; margin-right: 2vw;" xmlns="http://www.w3.org/2000/svg" 
+                    width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg>
+                </div>
             </div>
 
             <div style="margin-left: 10px; font-size: 18px; height: 50vh;">
