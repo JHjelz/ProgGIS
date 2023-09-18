@@ -3,10 +3,11 @@
     <head>
         <title>ProgGIS</title>
         
+        <!-- My css -->
         <link rel="stylesheet" href="css/style.css"/>
-
+        
+        <!-- Leaflet css -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     </head>
     
@@ -46,8 +47,8 @@
             </div>
 
             <div style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;">
-                <input type="file" none="dialog" id="fileSelect" multiple>
-                <button id="onClick" accept=".zip" onclick="clickMe()">Click here to open new layers</button>
+                <input type="file" accept=".zip" none="dialog" id="fileSelect">
+                <button id="onClick" onclick="clickMe()">Click here to open new layers</button>
             </div>
 
             <div style="margin-left: 10px; font-size: 18px; height: 50vh;">
@@ -138,14 +139,18 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Leaflet js -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+        <!-- My js -->
         <script src="javascript/map.js"></script>
         <script src="javascript/sidebar&boxes.js"></script>
-        <script src="javascript/openFileFromExplorer.js"></script>
+        <script src="javascript/openFileExplorer.js"></script>
+        <script src="javascript/fileHandler.js"></script>
         
-        <script src="javascript/index.js"></script>
+        <!-- Imported js -->
         <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
-        <script src="https://unpkg.com/shapefile@0.6"></script>
 
     </body>
 </html>

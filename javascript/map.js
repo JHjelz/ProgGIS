@@ -1,5 +1,5 @@
 // Initialiserer kartet:
-var map = L.map('map', {
+const map = L.map('map', {
     maxZoom: 18, // Justerer zoom-nivået
     minZoom: 6,
     zoomControl: false, // Fjerner default zoom-knapper
