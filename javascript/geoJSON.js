@@ -1,0 +1,1 @@
+L.GeoJSON.AJAX("exampleData/vann_2.geojson").addTo(map);
