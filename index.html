@@ -3,10 +3,11 @@
     <head>
         <title>ProgGIS</title>
         
+        <!-- My css -->
         <link rel="stylesheet" href="css/style.css"/>
-
+        
+        <!-- Leaflet css -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     </head>
     
@@ -46,8 +47,15 @@
             </div>
 
             <div style="margin-left: 10px; margin-top: 5px; margin-bottom: 5px;">
-                <input type="file" none="dialog" id="fileSelect" multiple>
-                <button id="onClick" accept=".zip" onclick="clickMe()">Click here to open new layers</button>
+                <input type="file" accept=".zip" none="dialog" id="fileInput">
+                <div class="box3">
+                    <button class="onClick" onclick="clickMe()">Click here to choose a new layer</button>
+
+                    <svg onclick="handleFile()" style="cursor: pointer; margin-right: 2vw;" xmlns="http://www.w3.org/2000/svg" 
+                    width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg>
+                </div>
             </div>
 
             <div style="margin-left: 10px; font-size: 18px; height: 50vh;">
@@ -138,14 +146,21 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Leaflet js -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+        <!-- My js -->
         <script src="javascript/map.js"></script>
         <script src="javascript/sidebar&boxes.js"></script>
-        <script src="javascript/openFileFromExplorer.js"></script>
+        <script src="javascript/openFileExplorer.js"></script>
+        <script src="javascript/fileHandler.js"></script>
+
+        <script src="javascript/geoJSON.js"></script>
+        <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
         
-        <script src="javascript/index.js"></script>
-        <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
-        <script src="https://unpkg.com/shapefile@0.6"></script>
+        <!-- Imported js -->
+        <!-- <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> -->
 
     </body>
 </html>
