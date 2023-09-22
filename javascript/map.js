@@ -46,11 +46,3 @@ function activateMap() {
         handler.enable();
     });
 }
-
-map.on('click', function() {
-    if(map.hasLayer(geoLayer)) {
-      map.removeLayer(geoLayer);
-    } else {
-      map.addLayer(geoLayer);
-    }
-  });
