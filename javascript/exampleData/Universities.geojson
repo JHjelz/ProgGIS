@@ -1,0 +1,33 @@
+{
+    "type": "FeatureCollection",
+    "name": "Universities",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"name": "Gløshaugen"},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [10.403787, 63.420031],
+                    [10.410954, 63.414691],
+                    [10.404863, 63.414188],
+                    [10.398170, 63.418901],
+                    [10.403787, 63.420031]
+                ]]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {"name": "Dragvoll"},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [10.467217, 63.409471],
+                    [10.471829, 63.408921],
+                    [10.47094, 63.406668],
+                    [10.466968 , 63.407128],
+                    [10.467217, 63.409471]
+                ]]
+            }
+        }
+    ]
+}
