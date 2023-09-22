@@ -13,9 +13,6 @@ fetch("javascript/exampleData/TrainingCenters.geojson").then(function(response) 
     layer2.addData(data);
 })
 
-document.getElementById("layers").innerHTML += layer1.name + "<br>";
-document.getElementById("layers").innerHTML += layer2.name;
-
 // Hvordan slå av og på et lag:
 
 /*
