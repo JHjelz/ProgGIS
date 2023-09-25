@@ -17,21 +17,13 @@ var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
 });
 
 osm_map.addTo(map);
-googleSat.addTo(map);
+
+// Layer control er lagd i 'leafletLayerControl.js'
 
 // Legger til zoom-knapper på egnet sted
 L.control.zoom({
     position:'topright'
 }).addTo(map);
-
-// Layer control:
-
-var baselayers = {
-    "OpenStreetMap": osm_map,
-    "Satellite": googleSat
-}
-
-L.control.layers(baselayers).addTo(map)
 
 /* Activate and deactivate interactions in the leaflet map*/
 
