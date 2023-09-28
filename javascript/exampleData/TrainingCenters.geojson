@@ -1,6 +1,6 @@
 {
     "type": "FeatureCollection",
-    "name": "Training centers",
+    "properties": {"name": "Training centers"},
     "features": [
         {
             "type": "Feature",

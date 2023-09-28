@@ -1,6 +1,6 @@
 {
     "type": "FeatureCollection",
-    "name": "Universities",
+    "properties": {"name": "Universities"},
     "features": [
         {
             "type": "Feature",
