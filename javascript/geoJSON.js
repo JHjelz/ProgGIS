@@ -1,3 +1,4 @@
+/*
 var U = {
   "type": "FeatureCollection",
   "properties": {"name": "Universities"},
@@ -68,20 +69,47 @@ var TC = {
 
 var layer1 = L.geoJSON(U);
 var layer2 = L.geoJSON(TC);
+*/
+
+layer = L.geoJSON().addTo(map);
 
 /*
 fetch("javascript/exampleData/Universities.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
-    layer1.addData(data);
+    layer.addData(data);
 })
 
 fetch("javascript/exampleData/TrainingCenters.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
-    layer2.addData(data);
+    layer.addData(data);
 })
 */
+
+fetch("javascript/exampleData/Arealdekke_klippa.geojson").then(function(response) {
+    return response.json();
+}).then(function(data) {
+    layer.addData(data);
+})
+
+fetch("javascript/exampleData/Bygg&Anlegg_f_klippa.geojson").then(function(response) {
+    return response.json();
+}).then(function(data) {
+    layer.addData(data);
+})
+
+fetch("javascript/exampleData/Bygg&Anlegg_l_klippa.geojson").then(function(response) {
+    return response.json();
+}).then(function(data) {
+    layer.addData(data);
+})
+
+fetch("javascript/exampleData/Samferdsel_klippa.geojson").then(function(response) {
+    return response.json();
+}).then(function(data) {
+    layer.addData(data);
+})
 
 // Hvordan slå av og på et lag:
 
