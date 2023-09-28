@@ -5,12 +5,18 @@ var baselayers = {
     "Satellite": googleSat
 }
 
-var controller = L.control.layers(baselayers).addTo(map);
+var overlayMaps = {
+    "Arealdekke": layer_Arealdekke,
+    "Byggning (f)": layer_Bygg_f,
+    "Byggning (l)": layer_Bygg_l,
+    "Samferdsel": layer_Samferdsel
+}
 
-var overlayMaps = [layer1, layer2];
+var controller = L.control.layers(baselayers, overlayMaps).addTo(map);
 
 // Test:
 
+/*
 for (const i = 0; i < length(overlayMaps); i++) {
     var checkbox = document.createElement("div");
     checkbox.innerHTML += "<input type='checkbox' onchange='handleLayer(layer)' />";
@@ -36,6 +42,7 @@ function handleLayer(layer) {
         map.addLayer(layer);
       }
 }
+*/
 
 /*var htmlObject = controller.getContainer();
 
