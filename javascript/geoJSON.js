@@ -71,10 +71,10 @@ var layer1 = L.geoJSON(U);
 var layer2 = L.geoJSON(TC);
 */
 
-layer_Arealdekke = L.geoJSON().addTo(map);
-layer_Bygg_f = L.geoJSON().addTo(map);
-layer_Bygg_l = L.geoJSON().addTo(map);
-layer_Samferdsel = L.geoJSON().addTo(map);
+var layer_Arealdekke = L.geoJSON().addTo(map);
+var layer_Bygg_f = L.geoJSON().addTo(map);
+var layer_Bygg_l = L.geoJSON().addTo(map);
+var layer_Samferdsel = L.geoJSON().addTo(map);
 
 /*
 fetch("javascript/exampleData/Universities.geojson").then(function(response) {
