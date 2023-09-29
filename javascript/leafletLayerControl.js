@@ -6,50 +6,33 @@ var baselayers = {
 }
 
 var overlayMaps = {
-    "Arealdekke": layer_Arealdekke,
-    "Byggning (f)": layer_Bygg_f,
-    "Byggning (l)": layer_Bygg_l,
-    "Samferdsel": layer_Samferdsel
+    "Arealdekke": Arealdekke,
+    "Bygg_f": Bygg_f,
+    "Bygg_l": Bygg_l,
+    "Samferdsel": Samferdsel,
+    "test1": test1,
+    "test2": test2
 }
 
-var controller = L.control.layers(baselayers, overlayMaps).addTo(map);
+var controller = L.control.layers(baselayers).addTo(map);
 
-// Test:
+// Til sidebaren:
 
-/*
-for (const i = 0; i < length(overlayMaps); i++) {
-    var checkbox = document.createElement("div");
-    checkbox.innerHTML += "<input type='checkbox' onchange='handleLayer(layer)' />";
+for (key in overlayMaps) {
+    var layerButton = document.createElement("div");
+    layerButton.innerHTML = "<button id='" + key + "' class='sidebarButton' onclick=handleLayer(" + key + ") />" + key;
     
     container = document.getElementById("layers");
-
-    container.appendChild(checkbox);
-
-    var t = overlayMaps[i]["properties"];
-
-    var label = document.createElement('label');
-    label.htmlFor = t;
-    label.appendChild(document.createTextNode(t));
-
-    container.appendChild(label);
+    container.appendChild(layerButton);
     container.appendChild(document.createElement("br"));
 }
 
 function handleLayer(layer) {
     if(map.hasLayer(layer)) {
         map.removeLayer(layer);
+        document.getElementById(layer).style.backgroundColor = "black"; // Dette må endres opp i!
       } else {
         map.addLayer(layer);
+        document.getElementById(layer.innerHTML).style.backgroundColor = "green";
       }
 }
-*/
-
-/*var htmlObject = controller.getContainer();
-
-var a = document.getElementById("layers");
-
-function setParent(el, newParent) {
-    newParent.appendChild(el);
-}
-
-setParent(htmlObject, a);*/
