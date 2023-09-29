@@ -1,4 +1,6 @@
-/*
+// Test-data jeg tester funksjonalitet på:
+// Det fungerer ikke å lese fra fil ved å kun kjøre html-filen lokalt
+
 var U = {
   "type": "FeatureCollection",
   "properties": {"name": "Universities"},
@@ -67,61 +69,44 @@ var TC = {
   ]
 };
 
+/*
 var layer1 = L.geoJSON(U);
 var layer2 = L.geoJSON(TC);
 */
 
-var layer_Arealdekke = L.geoJSON().addTo(map);
-var layer_Bygg_f = L.geoJSON().addTo(map);
-var layer_Bygg_l = L.geoJSON().addTo(map);
-var layer_Samferdsel = L.geoJSON().addTo(map);
+var test1 = L.geoJSON();
+var test2 = L.geoJSON();
 
-/*
-fetch("javascript/exampleData/Universities.geojson").then(function(response) {
-    return response.json();
-}).then(function(data) {
-    layer.addData(data);
-})
+test1.addData(U);
+test2.addData(TC);
 
-fetch("javascript/exampleData/TrainingCenters.geojson").then(function(response) {
-    return response.json();
-}).then(function(data) {
-    layer.addData(data);
-})
-*/
+// Det jeg skal ha med i ferdig versjon:
+
+var Arealdekke = L.geoJSON();
+var Bygg_f = L.geoJSON();
+var Bygg_l = L.geoJSON();
+var Samferdsel = L.geoJSON();
 
 fetch("javascript/exampleData/Arealdekke_klippa.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
-    layer_Arealdekke.addData(data);
+    Arealdekke.addData(data);
 })
 
 fetch("javascript/exampleData/Bygg&Anlegg_f_klippa.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
-    layer_Bygg_f.addData(data);
+    Bygg_f.addData(data);
 })
 
 fetch("javascript/exampleData/Bygg&Anlegg_l_klippa.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
-    layer_Bygg_l.addData(data);
+    Bygg_l.addData(data);
 })
 
 fetch("javascript/exampleData/Samferdsel_klippa.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
-    layer_Samferdsel.addData(data);
+    Samferdsel.addData(data);
 })
-
-// Hvordan slå av og på et lag:
-
-/*
-map.on('click', function() {
-    if(map.hasLayer(layer1)) {
-      map.removeLayer(layer1);
-    } else {
-      map.addLayer(layer1);
-    }
-  });
-*/

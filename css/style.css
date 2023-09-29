@@ -87,3 +87,19 @@
 #fileInput {
     display: none;
 }
+
+.sidebarButton {
+    font-family: monospace;
+    background-color: orangered;
+    color: white;
+    width: 20vw;
+    text-align: center;
+    border-color: white;
+    border-style: dotted;
+    border-width: 5px;
+    border-radius: 10px;
+    margin-top: 1vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    cursor: pointer;
+}
