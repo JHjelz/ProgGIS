@@ -1,0 +1,33 @@
+{
+    "type": "FeatureCollection",
+    "properties": {"name": "Training centers"},
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"name": "SIT Gløshaugen"},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [10.403855, 63.421078],
+                    [10.404845, 63.421427],
+                    [10.40556, 63.421042],
+                    [10.404572, 63.420705],
+                    [10.403855, 63.421078]
+                ]]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {"name": "SIT Dragvoll"},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [10.474145, 63.407263],
+                    [10.475657, 63.407148],
+                    [10.475491, 63.406157],
+                    [10.473766, 63.406265],
+                    [10.474145, 63.407263]
+                ]]
+            }
+        }
+    ]
+}
