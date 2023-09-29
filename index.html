@@ -22,11 +22,13 @@
             <div style="display: flex; flex-grow: 2; flex-direction: column;">
                 <h1 style="margin: 0; padding: 0; text-align: center; font-size: 12vh;">ProgGIS</h1>
                 <div class="box1">
-                    <p style="width: 17vw;"></p>
+                    <p style="width: 7vw;"></p>
                     <button class="button" onclick="openBox('bufferBox')">Buffer</button>
+                    <button class="button" onclick="openBox('differenceBox')">Difference</button>
+                    <button class="button" onclick="openBox('dissolveBox')">Dissolve</button>
+                    <button class="button" onclick="openBox('extractBox')">Extract</button>
                     <button class="button" onclick="openBox('intersectionBox')">Intersection</button>
                     <button class="button" onclick="openBox('unionBox')">Union</button>
-                    <button class="button" onclick="openBox('differenceBox')">Difference</button>
                 </div>
             </div>
             
@@ -75,6 +77,39 @@
                         </div>
                     </div>
 
+                    <div id="differenceBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Difference</h1>
+                            
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('differenceBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div id="dissolveBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Dissolve</h1>
+                            
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('dissolveBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div id="extractBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Extract</h1>
+                            
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('extractBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+                    </div>
+
                     <div id="intersectionBox" class="box">
                         <div class="box3">
                             <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Intersection</h1>
@@ -91,17 +126,6 @@
                             <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Union</h1>
                             
                             <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('unionBox')"
-                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div id="differenceBox" class="box">
-                        <div class="box3">
-                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Difference</h1>
-                            
-                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('differenceBox')"
                             xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
                             </svg>
