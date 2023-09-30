@@ -80,10 +80,6 @@ var test2 = L.geoJSON();
 test1.addData(U);
 test2.addData(TC);
 
-var point = turf.point([10.403787, 63.420031]);
-var buffered = turf.buffer(point, 500, {units: "meters"});
-var test3 = L.geoJSON(buffered).addTo(map);
-
 // Det jeg skal ha med i ferdig versjon:
 
 var Arealdekke = L.geoJSON();

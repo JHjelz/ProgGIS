@@ -5,20 +5,28 @@ https://turfjs.org/docs/
 
 // Fyller select med alternativ:
 
-var s = document.getElementById("bufferSelect");
+var select = document.getElementById("bufferSelect");
 
-s.options.lenght = 0;
+select.options.lenght = 0;
 
 for (key in overlayMaps) {
-    s.add(new Option(key, overlayMaps[key]));
+    select.add(new Option(key, overlayMaps[key]));
 }
 
 function makeBuffer() {
-    var layer = document.getElementById("bufferSelect").value;
-    var distance = parseFloat(document.getElementById("bufferDistance").value) / 10^3;
+    var layer = overlayMaps[document.getElementById("bufferSelect").value];
+    var distance = parseFloat(document.getElementById("bufferDistance").value);
     var name = document.getElementById("bufferName").value;
-    
-    var buffer = L.geoJSON(turf.buffer(layer, distance, {units: "kilometers"})).addTo(map);
 
-    overlayMaps[name] = buffer;
+    var object = layer.toGeoJSON();
+    console.log(JSON.stringify(object));
+
+    var buffer = turf.buffer(layer.toGeoJSON(), distance, {units: "meters"});
+    var newLayer = L.geoJSON(buffer);
+    
+    overlayMaps[name] = newLayer;
+    
+    updateSidebar();
+    
+    newLayer.addTo(map);
 }

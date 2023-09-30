@@ -36,3 +36,14 @@ function handleLayer(layer) {
         document.getElementById(layer.innerHTML).style.backgroundColor = "green";
       }
 }
+
+function updateSidebar() {
+    for (key in overlayMaps) {
+        var layerButton = document.createElement("div");
+        layerButton.innerHTML = "<button id='" + key + "' class='sidebarButton' onclick=handleLayer(" + key + ") />" + key;
+        
+        container = document.getElementById("layers");
+        container.appendChild(layerButton);
+        container.appendChild(document.createElement("br"));
+    }
+}
