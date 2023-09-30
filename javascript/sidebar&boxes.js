@@ -24,6 +24,7 @@ function openBox(id) {
     if (boolskNav) {
         closeNav();
     }
+    fillSelect(); // Denne må justeres ved flere Selects ;)
     document.getElementById(String(id)).style.width = "40vw";
     document.getElementById(String(id)).style.height = "40vh";
     document.getElementById(String(id)).style.borderWidth = "20px";

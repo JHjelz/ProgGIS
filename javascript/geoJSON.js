@@ -69,11 +69,6 @@ var TC = {
   ]
 };
 
-/*
-var layer1 = L.geoJSON(U);
-var layer2 = L.geoJSON(TC);
-*/
-
 var test1 = L.geoJSON();
 var test2 = L.geoJSON();
 
