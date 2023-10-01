@@ -10,8 +10,13 @@ function makeBuffer() {
     var name = document.getElementById("bufferName").value;
 
     try {
-        var buffer = turf.buffer(layer.toGeoJSON(), distance, {units: "meters"}); // Denne må ryddes opp i!
-        var newLayer = L.geoJSON(turf.dissolve(buffer));
+        var buffer = turf.buffer(layer.toGeoJSON(), distance, {units: "meters"});
+        
+        if (document.getElementById("bufferCheck").checked) {
+            var newLayer = L.geoJSON(turf.dissolve(buffer));
+        } else {
+            var newLayer = L.geoJSON(buffer);
+        }
         
         overlayMaps[name] = newLayer;
         
