@@ -13,6 +13,7 @@ function dissolve() {
         handleLayer(name);
         document.getElementById("dissolveSelect").value = "";
         document.getElementById("dissolveName").value = "";
+        fillSelect("dissolveSelect");
     } catch(failure) {
         alert(failure);
     }

@@ -28,6 +28,8 @@ function openBox(id) {
     // Fyller aktuell select med alternativ avhengig av hvilken boks en åpner:
     if (id == "bufferBox") {
         fillSelect("bufferSelect");
+    } else if (id == "differenceBox") {
+        fillDifferenceSelect();
     } else if (id == "dissolveBox") {
         fillSelect("dissolveSelect");
     }
@@ -58,5 +60,18 @@ function fillSelect(id) {
     
     for (key in overlayMaps) {
         select.add(new Option(text = key, value = key));
+    }
+}
+
+function fillDifferenceSelect() {
+    var select1 = document.getElementById("differenceSelect_1");
+    var select2 = document.getElementById("differenceSelect_2");
+    
+    select1.innerHTML = "";
+    select2.innerHTML = "";
+
+    for (key in overlayMaps) {
+        select1.add(new Option(text = key, value = key));
+        select2.add(new Option(text = key, value = key));
     }
 }

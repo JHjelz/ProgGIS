@@ -24,6 +24,7 @@ function makeBuffer() {
         handleLayer(name);
         document.getElementById("bufferDistance").value = "";
         document.getElementById("bufferName").value = "";
+        fillSelect("bufferSelect");
     } catch(failure) {
         alert(failure);
     }
