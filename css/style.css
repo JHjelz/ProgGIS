@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+p {
+    font-size: 18px;
+}
+
 .box {
     font-family: monospace;
     background-color: orange;
@@ -90,7 +94,7 @@
 
 .sidebarButton {
     font-family: monospace;
-    background-color: orangered;
+    background-color: black;
     color: white;
     width: 20vw;
     text-align: center;

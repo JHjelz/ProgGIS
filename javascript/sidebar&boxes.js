@@ -24,6 +24,12 @@ function openBox(id) {
     if (boolskNav) {
         closeNav();
     }
+
+    // Fyller aktuell select med alternativ avhengig av hvilken boks en åpner:
+    if (id == "bufferBox") {
+        fillSelect("bufferSelect");
+    }
+    
     document.getElementById(String(id)).style.width = "40vw";
     document.getElementById(String(id)).style.height = "40vh";
     document.getElementById(String(id)).style.borderWidth = "20px";
@@ -39,4 +45,17 @@ function closeBox(id) {
     boolskBox = false;
     box = null;
     activateMap();
+}
+
+// Fyller select i de ulike boksene med alternativ:
+
+function fillSelect(id) {
+    var select = document.getElementById(id);
+    
+    select.innerHTML = "";
+    
+    //select.options.lenght = 0;
+    for (key in overlayMaps) {
+        select.add(new Option(text = key, value = key));
+    }
 }
