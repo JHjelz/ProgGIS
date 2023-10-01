@@ -28,6 +28,8 @@ function openBox(id) {
     // Fyller aktuell select med alternativ avhengig av hvilken boks en åpner:
     if (id == "bufferBox") {
         fillSelect("bufferSelect");
+    } else if (id == "dissolveBox") {
+        fillSelect("dissolveSelect");
     }
     
     document.getElementById(String(id)).style.width = "40vw";
@@ -54,7 +56,6 @@ function fillSelect(id) {
     
     select.innerHTML = "";
     
-    //select.options.lenght = 0;
     for (key in overlayMaps) {
         select.add(new Option(text = key, value = key));
     }
