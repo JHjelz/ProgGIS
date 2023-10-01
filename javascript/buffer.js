@@ -3,16 +3,6 @@ Link til nettside med turfjs-funksjoner:
 https://turfjs.org/docs/
 */
 
-// Fyller select med alternativ:
-
-function fillSelect() {
-    var select = document.getElementById("bufferSelect");
-    select.options.lenght = 0;
-    for (key in overlayMaps) {
-        select.add(new Option(text = key, value = key)); //overlayMaps[key]
-    }
-}
-
 function makeBuffer() {
     var input = document.getElementById("bufferSelect").value;
     var layer = overlayMaps[input];
@@ -21,15 +11,14 @@ function makeBuffer() {
 
     try {
         var buffer = turf.buffer(layer.toGeoJSON(), distance, {units: "meters"}); // Denne må ryddes opp i!
-        var newLayer = L.geoJSON(buffer);
+        var newLayer = L.geoJSON(turf.dissolve(buffer));
         
-        // Må endre denne for å få funksjonaliteten på sida til å fungere
-        // Problematisk med samme navn på key og value for dictionaries
         overlayMaps[name] = newLayer;
         
         updateSidebar();
-        
-        //newLayer.addTo(map);
+        handleLayer(name);
+        document.getElementById("bufferDistance").value = "";
+        document.getElementById("bufferName").value = "";
     } catch(failure) {
         alert(failure);
     }
