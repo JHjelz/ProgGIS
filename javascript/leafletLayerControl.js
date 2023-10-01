@@ -16,12 +16,14 @@ var addedLayers = [];
 
 function loadExampleData() {
     if (!exampleLoaded) {
+        
         overlayMaps["Arealdekke"] = Arealdekke;
         overlayMaps["Bygg_f"] = Bygg_f;
         overlayMaps["Bygg_l"] = Bygg_l;
         overlayMaps["Samferdsel"] = Samferdsel;
         overlayMaps["test1"] = test1;
         overlayMaps["test2"] = test2;
+        
         updateSidebar();
         exampleLoaded = true;
         document.getElementById("exampleData").style.display = "none";
@@ -34,7 +36,7 @@ function updateSidebar() {
             addedLayers.push(key);
 
             var layerButton = document.createElement("div");
-            layerButton.innerHTML = "<button id='" + key + "' class='sidebarButton' onclick=handleLayer(" + key + ") />" + key;
+            layerButton.innerHTML = `<button id=${key} class='sidebarButton' onclick='handleLayer("${key}")' />${key}`;
             
             container = document.getElementById("layers");
             container.appendChild(layerButton);
@@ -43,12 +45,12 @@ function updateSidebar() {
     }
 }
 
-function handleLayer(layer) {
-    var name = null;
-    
+function handleLayer(name) {
+    var layer = null;
+
     for (key in overlayMaps) {
-        if (overlayMaps[key] == layer) {
-            name = key;
+        if (key == name) {
+            layer = overlayMaps[key];
             break;
         }
     }
