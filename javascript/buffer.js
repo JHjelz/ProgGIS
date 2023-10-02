@@ -12,6 +12,10 @@ function makeBuffer() {
     try {
         var buffer = turf.buffer(layer, distance, {units: "meters"});
         
+        /*
+        Funker ikke for 'Samferdsel'-laget med buffer-distanse mellom 68 og 101 meter.
+        */
+
         if (document.getElementById("bufferCheck").checked) {
             var dissolved = turf.dissolve(buffer);
             var newLayer = L.geoJSON(dissolved);
