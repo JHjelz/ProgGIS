@@ -29,9 +29,11 @@ function openBox(id) {
     if (id == "bufferBox") {
         fillSelect("bufferSelect");
     } else if (id == "differenceBox") {
-        fillDifferenceSelect();
+        fillDoubleSelect("differenceSelect");
     } else if (id == "dissolveBox") {
         fillSelect("dissolveSelect");
+    } else if (id == "intersectionBox") {
+        fillDoubleSelect("intersectionSelect");
     }
     
     document.getElementById(String(id)).style.width = "40vw";
@@ -63,9 +65,9 @@ function fillSelect(id) {
     }
 }
 
-function fillDifferenceSelect() {
-    var select1 = document.getElementById("differenceSelect_1");
-    var select2 = document.getElementById("differenceSelect_2");
+function fillDoubleSelect(id) {
+    var select1 = document.getElementById(id + "_1");
+    var select2 = document.getElementById(id + "_2");
     
     select1.innerHTML = "";
     select2.innerHTML = "";
