@@ -15,6 +15,7 @@ function featureCollectionToMultiPolygon(layer) { // layer er her et GeoJSON-lag
     }
 }
 
+/*
 function multiPolygonToFeatureCollection(layer) {
     if (layer["type"] == "MultiPolygon") {
         var features = [];
@@ -28,3 +29,4 @@ function multiPolygonToFeatureCollection(layer) {
         return turf.featureCollection(features);
     }
 }
+*/
