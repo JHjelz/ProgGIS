@@ -1,14 +1,15 @@
 function dissolve() {
     var input = document.getElementById("dissolveSelect").value;
-    var layer = overlayMaps[input];
+    var layer = overlayMaps[input].toGeoJSON();
     var name = document.getElementById("dissolveName").value;
     
     try {
+        console.log(JSON.stringify(layer))
         if (layer["type"] == "MultiPolygon") {
             layer = multiPolygonToFeatureCollection(layer);
         }
-        
-        var dissolved = turf.dissolve(layer.toGeoJSON());
+
+        var dissolved = turf.dissolve(layer);
         var newLayer = L.geoJSON(dissolved);
 
         overlayMaps[name] = newLayer;
