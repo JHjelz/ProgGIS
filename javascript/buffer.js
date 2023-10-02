@@ -13,6 +13,7 @@ function makeBuffer() {
         var buffer = turf.buffer(layer.toGeoJSON(), distance, {units: "meters"});
         
         if (document.getElementById("bufferCheck").checked) {
+            console.log(JSON.stringify(buffer));
             var newLayer = L.geoJSON(turf.dissolve(buffer));
         } else {
             var newLayer = L.geoJSON(buffer);

@@ -4,6 +4,10 @@ function dissolve() {
     var name = document.getElementById("dissolveName").value;
     
     try {
+        if (layer["type"] == "MultiPolygon") {
+            layer = multiPolygonToFeatureCollection(layer);
+        }
+        
         var dissolved = turf.dissolve(layer.toGeoJSON());
         var newLayer = L.geoJSON(dissolved);
 
