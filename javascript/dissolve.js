@@ -4,7 +4,7 @@ function dissolve() {
     var name = document.getElementById("dissolveName").value;
     
     try {
-        console.log(JSON.stringify(layer))
+        console.log(layer["type"]);
         if (layer["type"] == "MultiPolygon") {
             console.log("Ja");
             layer = multiPolygonToFeatureCollection(layer);
