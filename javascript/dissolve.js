@@ -6,6 +6,7 @@ function dissolve() {
     try {
         console.log(JSON.stringify(layer))
         if (layer["type"] == "MultiPolygon") {
+            console.log("Ja");
             layer = multiPolygonToFeatureCollection(layer);
         }
 
