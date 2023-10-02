@@ -5,15 +5,20 @@ https://turfjs.org/docs/
 
 function makeBuffer() {
     var input = document.getElementById("bufferSelect").value;
-    var layer = overlayMaps[input];
+    var layer = overlayMaps[input].toGeoJSON();
     var distance = parseFloat(document.getElementById("bufferDistance").value);
     var name = document.getElementById("bufferName").value;
 
     try {
-        var buffer = turf.buffer(layer.toGeoJSON(), distance, {units: "meters"});
+        var buffer = turf.buffer(layer, distance, {units: "meters"});
         
+        /*
+        Funker ikke for 'Samferdsel'-laget med buffer-distanse mellom 68 og 101 meter.
+        */
+
         if (document.getElementById("bufferCheck").checked) {
-            var newLayer = L.geoJSON(turf.dissolve(buffer));
+            var dissolved = turf.dissolve(buffer);
+            var newLayer = L.geoJSON(dissolved);
         } else {
             var newLayer = L.geoJSON(buffer);
         }
