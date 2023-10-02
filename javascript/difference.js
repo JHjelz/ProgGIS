@@ -23,6 +23,6 @@ function difference() {
         document.getElementById("differenceName").value = "";
         fillDoubleSelect("differenceSelect");
     } catch(failure) {
-        alert(failure)
+        alert(failure);
     }
 }

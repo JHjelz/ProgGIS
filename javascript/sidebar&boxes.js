@@ -19,7 +19,7 @@ function closeNav() {
 
 function openBox(id) {
     if (boolskBox) {
-        closeBox(box)
+        closeBox(box);
     }
     if (boolskNav) {
         closeNav();
@@ -34,6 +34,8 @@ function openBox(id) {
         fillSelect("dissolveSelect");
     } else if (id == "intersectionBox") {
         fillDoubleSelect("intersectionSelect");
+    } else if (id == "unionBox") {
+        fillDoubleSelect("unionSelect");
     }
     
     document.getElementById(String(id)).style.width = "40vw";
