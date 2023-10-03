@@ -69,18 +69,15 @@ var TC = {
   ]
 };
 
-var test1 = L.geoJSON();
-var test2 = L.geoJSON();
-
-test1.addData(U);
-test2.addData(TC);
+var test1 = L.geoJSON(U, {style: getStyle()});
+var test2 = L.geoJSON(TC, {style: getStyle()});
 
 // Det jeg skal ha med i ferdig versjon:
 
-var Arealdekke = L.geoJSON();
-var Bygg_f = L.geoJSON();
-var Bygg_l = L.geoJSON();
-var Samferdsel = L.geoJSON();
+var Arealdekke = L.geoJSON(null, {style: getStyle()});
+var Bygg_f = L.geoJSON(null, {style: getStyle()});
+var Bygg_l = L.geoJSON(null, {style: getStyle()});
+var Samferdsel = L.geoJSON(null, {style: getStyle()});
 
 fetch("javascript/exampleData/Arealdekke_klippa.geojson").then(function(response) {
     return response.json();

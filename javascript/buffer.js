@@ -18,9 +18,9 @@ function makeBuffer() {
 
         if (document.getElementById("bufferCheck").checked) {
             var dissolved = turf.dissolve(buffer);
-            var newLayer = L.geoJSON(dissolved);
+            var newLayer = L.geoJSON(dissolved, {style: getStyle()});
         } else {
-            var newLayer = L.geoJSON(buffer);
+            var newLayer = L.geoJSON(buffer, {style: getStyle()});
         }
         
         overlayMaps[name] = newLayer;
