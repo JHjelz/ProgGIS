@@ -6,7 +6,7 @@ konvertere mellom feature collections og format godtatt av turf
 function featureCollectionToMultiPolygon(layer) { // layer er her et GeoJSON-lag
     if (layer["type"] == "FeatureCollection") {
         var coords = [];
-        var features = layer["features"]
+        var features = layer["features"];
 
         for (var i = 0; i < features.length; i++) {
             coords.push(features[i]["geometry"]["coordinates"]);
