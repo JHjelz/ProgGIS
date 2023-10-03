@@ -72,11 +72,6 @@ var TC = {
 var test1 = L.geoJSON(U, {style: getStyle()});
 var test2 = L.geoJSON(TC, {style: getStyle()});
 
-//addMapLayer(test1, U);
-//addMapLayer(test2, TC);
-//test1.addData(U);
-//test2.addData(TC);
-
 // Det jeg skal ha med i ferdig versjon:
 
 var Arealdekke = L.geoJSON(null, {style: getStyle()});

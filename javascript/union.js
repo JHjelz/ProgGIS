@@ -14,7 +14,7 @@ function union() {
 
     try {
         var union = turf.union(multiPolygon1, multiPolygon2);
-        var newLayer = L.geoJSON(union);
+        var newLayer = L.geoJSON(union, {style: getStyle()});
 
         overlayMaps[name] = newLayer;
 

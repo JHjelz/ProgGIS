@@ -14,7 +14,7 @@ function difference() {
 
     try {
         var difference = turf.difference(multiPolygon1, multiPolygon2);
-        var newLayer = L.geoJSON(difference);
+        var newLayer = L.geoJSON(difference, {style: getStyle()});
         
         overlayMaps[name] = newLayer;
 
