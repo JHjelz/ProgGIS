@@ -14,7 +14,7 @@ function intersection() {
     
     try {
         var intersection = turf.intersect(multiPolygon1, multiPolygon2);
-        var newLayer = new L.GeoJSON(intersection);
+        var newLayer = new L.GeoJSON(intersection, {style: getStyle()});
         
         overlayMaps[name] = newLayer;
 

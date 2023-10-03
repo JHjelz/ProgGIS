@@ -5,7 +5,7 @@ function dissolve() {
     
     try {
         var dissolved = turf.dissolve(layer);
-        var newLayer = L.geoJSON(dissolved);
+        var newLayer = L.geoJSON(dissolved, {style: getStyle()});
 
         overlayMaps[name] = newLayer;
 
