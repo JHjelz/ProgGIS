@@ -27,10 +27,140 @@ var points = {
             "type": "Feature",
             "geometry": {
               "type": "Point",
+              "coordinates": [10.388918, 63.4203714]
+            },
+            "properties": {
+              "name": "NTNU Øya"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4347967, 63.4235678]
+            },
+            "properties": {
+              "name": "NTNU Tyholt"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4143153, 63.433756]
+            },
+            "properties": {
+              "name": "NTNU Solsiden"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
               "coordinates": [10.4336351, 63.4138729]
             },
             "properties": {
               "name": "NTNU Moholt"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4032871, 63.4340888]
+            },
+            "properties": {
+              "name": "NTNU Olavskvartalet"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4071882, 63.4107064]
+            },
+            "properties": {
+              "name": "NTNU Lerkendal og Valgrinda"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.3861107, 63.4288662]
+            },
+            "properties": {
+              "name": "NTNU Kalvskinnet"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4540302, 63.4473022]
+            },
+            "properties": {
+              "name": "NTNU Ringve"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.3483128, 63.4415347]
+            },
+            "properties": {
+              "name": "NTNU Heggdalen"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4492127, 63.4521411]
+            },
+            "properties": {
+              "name": "NTNU Østmarka"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.3981586, 63.4373727]
+            },
+            "properties": {
+              "name": "NTNU Brattørkaia"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.3992594, 63.4152944]
+            },
+            "properties": {
+              "name": "NTNU Elgeseter"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4837531, 63.4393659]
+            },
+            "properties": {
+              "name": "NTNU Rotvoll"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [10.4660445, 63.42338]
+            },
+            "properties": {
+              "name": "NTNU Tunga"
             }
         }
     ]
@@ -91,6 +221,9 @@ function changeMap() {
         }
         if (isVoronoi) {
             voronoi();
+        }
+        if (isTIN) {
+            TIN();
         }
 
         // Legger til kartlagene som lå i kartet før en byttet kartmodus:
