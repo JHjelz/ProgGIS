@@ -32,6 +32,8 @@ function openBox(id) {
         fillDoubleSelect("differenceSelect");
     } else if (id == "dissolveBox") {
         fillSelect("dissolveSelect");
+    } else if (id == "extractBox") {
+        fillSelect("extractSelect");
     } else if (id == "intersectionBox") {
         fillDoubleSelect("intersectionSelect");
     } else if (id == "unionBox") {
@@ -59,8 +61,8 @@ function closeBox(id) {
 
 function fillSelect(id) {
     var select = document.getElementById(id);
-    
     select.innerHTML = "";
+    select.add(new Option(text="- - -"));
     
     for (key in overlayMaps) {
         select.add(new Option(text = key, value = key));
@@ -70,9 +72,10 @@ function fillSelect(id) {
 function fillDoubleSelect(id) {
     var select1 = document.getElementById(id + "_1");
     var select2 = document.getElementById(id + "_2");
-    
     select1.innerHTML = "";
     select2.innerHTML = "";
+    select1.add(new Option(text="- - -"));
+    select2.add(new Option(text="- - -"));
 
     for (key in overlayMaps) {
         select1.add(new Option(text = key, value = key));
