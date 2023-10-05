@@ -76,8 +76,6 @@ function extract() {
 
         var newLayer = new L.GeoJSON(extract, {style: getStyle()});
 
-        console.log(newLayer);
-
         overlayMaps[name] = newLayer;
         
         updateSidebar();
@@ -94,9 +92,7 @@ function resetInput() {
 
     var select = document.getElementById("propertySelect");
     select.innerHTML = "";
-    //select.add(new Option(text="- - -"));
 
     var select = document.getElementById("valueSelect");
     select.innerHTML = "";
-    //select.add(new Option(text="- - -"));
 }
