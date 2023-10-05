@@ -27,7 +27,7 @@
 
             <div style="display: flex; flex-grow: 2; flex-direction: column;">
                 <h1 style="margin: 0; padding: 0; text-align: center; font-size: 12vh;">ProgGIS</h1>
-                <div class="box1">
+                <div id="buttons1" class="box1">
                     <p style="width: 7vw;"></p>
                     <button class="button" onclick="openBox('bufferBox')">Buffer</button>
                     <button class="button" onclick="openBox('differenceBox')">Difference</button>
@@ -35,6 +35,11 @@
                     <button class="button" onclick="openBox('extractBox')">Extract</button>
                     <button class="button" onclick="openBox('intersectionBox')">Intersection</button>
                     <button class="button" onclick="openBox('unionBox')">Union</button>
+                </div>
+                <div id="buttons2" class="box2" style="display: none;">
+                    <p style="width: 32vw;"></p>
+                    <button class="button">TIN</button>
+                    <button class="button">Voronoi</button>
                 </div>
             </div>
             
@@ -229,9 +234,15 @@
 
                 <div class="box2">
                     <div style="padding-left: 2vw;">
-                        <svg style="cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="openNav()"
+                        <svg id="sidebarOpener" style="cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="openNav()"
                         xmlns="http://www.w3.org/2000/svg" width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+
+                        <svg id="mapChanger" style="margin-left: 8vh; cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="changeMap()"
+                        xmlns="http://www.w3.org/2000/svg" width="6vh" height="6vh" fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+                            <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
                         </svg>
                     </div>
 
@@ -264,6 +275,7 @@
         <script src="javascript/intersect.js"></script>
         <script src="javascript/union.js"></script>
         <script src="javascript/extract.js"></script>
+        <script src="javascript/mapChange.js"></script>
 
         <!-- Imported js -->
         <!-- <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> -->
