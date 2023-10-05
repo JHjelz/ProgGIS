@@ -34,7 +34,7 @@ var points = {
             }
         }
     ]
-}
+};
 
 var m = "m1"; // Hvilket kart en bruker
 var layersOnMap = []; // Hvilke kartlag som var på før en byttet til "m2"
@@ -85,9 +85,12 @@ function changeMap() {
         document.getElementById("sidebarOpener").style.display = "block";
         document.getElementById("mapChanger").style.marginLeft = "8vh";
 
-        // Fjerner punkt-markørene fra kartet:
+        // Fjerner punkt-markørene og eventuelle voronoi- og TIN-diagram fra kartet:
         if (map.hasLayer(NTNU_points)) {
             map.removeLayer(NTNU_points);
+        }
+        if (isVoronoi) {
+            voronoi();
         }
 
         // Legger til kartlagene som lå i kartet før en byttet kartmodus:
