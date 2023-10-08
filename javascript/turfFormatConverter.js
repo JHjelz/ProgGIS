@@ -11,22 +11,25 @@ function featureCollectionToMultiPolygon(layer) { // layer er her et GeoJSON-lag
         for (var i = 0; i < features.length; i++) {
             coords.push(features[i]["geometry"]["coordinates"]);
         }
-        return coords;
+        return turf.multiPolygon(coords);
     }
 }
 
-/*
-function multiPolygonToFeatureCollection(layer) {
-    if (layer["type"] == "MultiPolygon") {
-        var features = [];
-        for (var i = 0; i < layer["coordinates"].length; i++) {
-            var geometry = {
-                "type": "Polygon",
-                "coordinates": layer["geometry"][i]
-            }
-            coords.push(geometry);
-        }
-        return turf.featureCollection(features);
+function isMultiPolygon(layer) {
+    if (layer["geometry"]["type"] == "MultiPolygon") {
+        return true;
     }
+    return false;
 }
-*/
+
+function multiPolygonToFeatureCollection(layer) {
+    var features = [];
+    for (var i = 0; i < layer["geometry"]["coordinates"].length; i++) {
+        var geometry = {
+            "type": "Polygon",
+            "coordinates": layer["geometry"]["coordinates"][i]
+        };
+        features.push(turf.feature(geometry));
+    }
+    return turf.featureCollection(features);
+}
