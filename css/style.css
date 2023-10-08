@@ -107,3 +107,12 @@ p {
     margin-right: 2vw;
     cursor: pointer;
 }
+
+.tutorial {
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    height: 26vh;
+    width: 39vw;
+    text-align: center;
+}

@@ -20,6 +20,8 @@ function makeBuffer() {
         return alert("You need to choose a name for the new layer!");
     } else if (!document.getElementById("bufferName").value.match(regex_2)) {
         return alert("The new name must consist of normal letters!");
+    } else if (doLayerExist(document.getElementById("bufferName").value)) {
+        return alert("Choose another name! There exists already a layer with that name.")
     }
 
     var input = document.getElementById("bufferSelect").value;
