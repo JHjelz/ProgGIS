@@ -8,10 +8,14 @@ function union() {
         return alert("You need to choose the first layer!");
     } else if (document.getElementById("unionSelect_2").value == "- - -") {
         return alert("You need to choose the secondt layer!");
+    } else if (document.getElementById("unionSelect_1").value == document.getElementById("unionSelect_2").value) {
+        return alert("You can not choose the same layer twice!")
     } else if (!document.getElementById("unionName").value) {
         return alert("You need to choose a name for the new layer!");
     } else if (!document.getElementById("unionName").value.match(regex)) {
         return alert("The new name must consist of normal letters!");
+    } else if (doLayerExist(document.getElementById("unionName").value)) {
+        return alert("Choose another name! There exists already a layer with that name.")
     }
 
     var input1 = document.getElementById("unionSelect_1").value;
