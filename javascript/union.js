@@ -6,12 +6,9 @@ function union() {
     var name = document.getElementById("unionName").value;
 
     // Må konverteres fra feature collection til multipolygon:
-    var coords1 = featureCollectionToMultiPolygon(layer1);
-    var coords2 = featureCollectionToMultiPolygon(layer2);
+    var multiPolygon1 = featureCollectionToMultiPolygon(layer1);
+    var multiPolygon2 = featureCollectionToMultiPolygon(layer2);
     
-    var multiPolygon1 = turf.multiPolygon(coords1);
-    var multiPolygon2 = turf.multiPolygon(coords2);
-
     try {
         var union = turf.union(multiPolygon1, multiPolygon2);
 
