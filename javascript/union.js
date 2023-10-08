@@ -1,4 +1,19 @@
 function union() {
+
+    // Sjekk av faktisk og gyldig input:
+
+    var regex = /^[a-zA-Z_0-9]+$/;
+
+    if (document.getElementById("unionSelect_1").value == "- - -") {
+        return alert("You need to choose the first layer!");
+    } else if (document.getElementById("unionSelect_2").value == "- - -") {
+        return alert("You need to choose the secondt layer!");
+    } else if (!document.getElementById("unionName").value) {
+        return alert("You need to choose a name for the new layer!");
+    } else if (!document.getElementById("unionName").value.match(regex)) {
+        return alert("The new name must consist of normal letters!");
+    }
+
     var input1 = document.getElementById("unionSelect_1").value;
     var layer1 = overlayMaps[input1].toGeoJSON();
     var input2 = document.getElementById("unionSelect_2").value;
