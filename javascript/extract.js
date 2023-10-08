@@ -2,7 +2,7 @@ document.getElementById("extractSelect").addEventListener("change", () => {
     var input = document.getElementById("extractSelect").value;
 
     if (input == "- - -") {
-        var select = document.getElementById("propertySelect");
+        var select = document.getElementById("featureSelect");
         select.innerHTML = "";
         select.add(new Option(text="- - -"));
     } else {
@@ -18,7 +18,7 @@ document.getElementById("extractSelect").addEventListener("change", () => {
             }
         }
         
-        var select = document.getElementById("propertySelect");
+        var select = document.getElementById("featureSelect");
         select.innerHTML = "";
         select.add(new Option(text="- - -"));
 
@@ -28,7 +28,7 @@ document.getElementById("extractSelect").addEventListener("change", () => {
     }
 })
 
-document.getElementById("propertySelect").addEventListener("change", () => {
+document.getElementById("featureSelect").addEventListener("change", () => {
     var input = document.getElementById("extractSelect").value;
 
     if (input == "- - -") {
@@ -37,7 +37,7 @@ document.getElementById("propertySelect").addEventListener("change", () => {
         select.add(new Option(text="- - -"));
     } else {
         var layer = overlayMaps[input].toGeoJSON();
-        var property = document.getElementById("propertySelect").value;
+        var property = document.getElementById("featureSelect").value;
 
         var values = [];
 
@@ -58,9 +58,26 @@ document.getElementById("propertySelect").addEventListener("change", () => {
 })
 
 function extract() {
+    
+    // Sjekk av faktisk og gyldig input:
+
+    var regex = /^[a-zA-Z_0-9]+$/;
+
+    if (document.getElementById("extractSelect").value == "- - -") {
+        return alert("You need to choose a layer!");
+    } else if (document.getElementById("featureSelect").value == "- - -") {
+        return alert("You need to choose a feature!");
+    } else if (document.getElementById("valueSelect").value == "- - -") {
+        return alert("You need to choose a value!");
+    } else if (!document.getElementById("extractName").value) {
+        return alert("You need to choose a name for the new layer!");
+    } else if (!document.getElementById("extractName").value.match(regex)) {
+        return alert("The new name must consist of normal letters!");
+    }
+
     var input = document.getElementById("extractSelect").value;
     var layer = overlayMaps[input].toGeoJSON();
-    var property = document.getElementById("propertySelect").value;
+    var property = document.getElementById("featureSelect").value;
     var value = document.getElementById("valueSelect").value;
     var name = document.getElementById("extractName").value;
 
@@ -90,7 +107,7 @@ function extract() {
 function resetInput() {
     fillSelect("extractSelect");
 
-    var select = document.getElementById("propertySelect");
+    var select = document.getElementById("featureSelect");
     select.innerHTML = "";
 
     var select = document.getElementById("valueSelect");
