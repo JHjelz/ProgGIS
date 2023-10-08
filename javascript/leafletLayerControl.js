@@ -63,3 +63,14 @@ function handleLayer(name) {
         document.getElementById(name).style.backgroundColor = "green";
       }
 }
+
+// Sjekk at laget ikke eksisterer enda:
+
+function doLayerExist(name) {
+    for (key in overlayMaps) {
+        if (key == name) {
+            return true;
+        }
+    }
+    return false;
+}

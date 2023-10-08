@@ -73,6 +73,8 @@ function extract() {
         return alert("You need to choose a name for the new layer!");
     } else if (!document.getElementById("extractName").value.match(regex)) {
         return alert("The new name must consist of normal letters!");
+    } else if (doLayerExist(document.getElementById("extractName").value)) {
+        return alert("Choose another name! There exists already a layer with that name.")
     }
 
     var input = document.getElementById("extractSelect").value;

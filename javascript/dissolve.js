@@ -10,6 +10,8 @@ function dissolve() {
         return alert("You need to choose a name for the new layer!");
     } else if (!document.getElementById("dissolveName").value.match(regex)) {
         return alert("The new name must consist of normal letters!");
+    } else if (doLayerExist(document.getElementById("dissolveName").value)) {
+        return alert("Choose another name! There exists already a layer with that name.")
     }
 
     var input = document.getElementById("dissolveSelect").value;
