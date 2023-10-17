@@ -124,7 +124,7 @@
                         <p>Choose a name for the new layer:</p>
                         <input id="differenceName"><br>
 
-                        <button class="button" style="font-size: 25px;" onclick="difference()">Make difference</button>
+                        <button class="button" style="font-size: 25px;" onclick="makeDifference()">Make difference</button>
                     </div>
 
                     <div id="dissolveBox" class="box">
@@ -143,7 +143,7 @@
                         <p>Choose a name for the new dissolved layer:</p>
                         <input id="dissolveName"><br>
 
-                        <button class="button" style="font-size: 25px;" onclick="dissolve()">Dissolve</button>
+                        <button class="button" style="font-size: 25px;" onclick="doDissolve()">Dissolve</button>
                     </div>
 
                     <div id="extractBox" class="box">
@@ -168,7 +168,7 @@
                         <p>Choose a name for the new layer:</p>
                         <input id="extractName"><br>
 
-                        <button class="button" style="font-size: 25px;" onclick="extract()">Extract</button>
+                        <button class="button" style="font-size: 25px;" onclick="doExtract()">Extract</button>
                     </div>
 
                     <div id="intersectionBox" class="box">
@@ -190,7 +190,7 @@
                         <p>Choose a name for the intersection:</p>
                         <input id="intersectionName"><br>
 
-                        <button class="button" style="font-size: 25px;" onclick="intersection()">Intersect</button>
+                        <button class="button" style="font-size: 25px;" onclick="makeIntersection()">Intersect</button>
                     </div>
 
                     <div id="unionBox" class="box">
@@ -212,7 +212,7 @@
                         <p>Choose a name for the union:</p>
                         <input id="unionName"><br>
 
-                        <button class="button" style="font-size: 25px;" onclick="union()">Make union</button>
+                        <button class="button" style="font-size: 25px;" onclick="makeUnion()">Make union</button>
                     </div>
 
                     <div id="tutorialBox" class="box">
@@ -271,26 +271,31 @@
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
         <!-- My js -->
+
+        <!-- General -->
+
         <script src="javascript/map.js"></script>
         <script src="javascript/sidebar&boxes.js"></script>
         <script src="javascript/openFileExplorer.js"></script>
-        <script src="javascript/fileHandler.js"></script>
         <script src="javascript/geoJSON.js"></script>
         <script src="javascript/leafletLayerControl.js"></script>
+        <script src="javascript/turfFormatConverter.js"></script>
+        <script src="javascript/tutorial.js"></script>
+
+        <!-- Map functions -->
+        
         <script src="javascript/buffer.js"></script>
         <script src="javascript/dissolve.js"></script>
         <script src="javascript/difference.js"></script>
-        <script src="javascript/turfFormatConverter.js"></script>
         <script src="javascript/intersect.js"></script>
         <script src="javascript/union.js"></script>
         <script src="javascript/extract.js"></script>
+        
+        <!-- Map change -->
+
         <script src="javascript/mapChange.js"></script>
         <script src="javascript/voronoi.js"></script>
         <script src="javascript/tin.js"></script>
-        <script src="javascript/tutorial.js"></script>
-
-        <!-- Imported js -->
-        <!-- <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> -->
-
+    
     </body>
 </html>
