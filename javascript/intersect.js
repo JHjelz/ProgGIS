@@ -1,4 +1,4 @@
-function intersection() {
+function makeIntersection() {
 
     // Sjekk av faktisk og gyldig input:
 
