@@ -57,7 +57,7 @@ document.getElementById("featureSelect").addEventListener("change", () => {
     }
 })
 
-function extract() {
+function doExtract() {
     
     // Sjekk av faktisk og gyldig input:
 

@@ -1,4 +1,4 @@
-function difference() {
+function makeDifference() {
 
     // Sjekk av faktisk og gyldig input:
 

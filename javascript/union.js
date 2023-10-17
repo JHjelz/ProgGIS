@@ -1,4 +1,4 @@
-function union() {
+function makeUnion() {
 
     // Sjekk av faktisk og gyldig input:
 

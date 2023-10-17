@@ -1,4 +1,4 @@
-function dissolve() {
+function doDissolve() {
 
     // Sjekk av faktisk og gyldig input:
 
