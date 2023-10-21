@@ -26,6 +26,8 @@ function handleFile() {
     }
 
     overlayMaps[selectedFile.name] = newLayer;
+
     updateSidebar();
+    
     handleLayer(selectedFile.name);
 }
