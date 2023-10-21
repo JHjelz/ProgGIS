@@ -3,3 +3,7 @@ const dialog = document.getElementById("fileInput"); // Input-feltet vi har skju
 function clickMe() {
     dialog.click();
 }
+
+dialog.addEventListener('change', () => {
+    document.getElementById("loadButton").style.backgroundColor = "green";
+})
