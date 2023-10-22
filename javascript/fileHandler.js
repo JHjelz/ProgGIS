@@ -4,10 +4,8 @@ function handleFile() {
     const selectedFile = fileHandler.files[0];
     
     if (selectedFile == null) {
-        return alert("No chosen file!")
+        return alert("No chosen file!");
     }
-
-    //console.log(selectedFile); // Printer bare selve filen til loggen
 
     fileHandler.value = "";
     document.getElementById("loadButton").style.backgroundColor = "orangered";
@@ -15,19 +13,34 @@ function handleFile() {
     var read = new FileReader();
     read.readAsDataURL(selectedFile);
     
-    var newLayer = L.geoJSON(null, {style: getStyle()})
+    var newLayer = L.geoJSON(null, {style: getStyle()});
+
+    var info = null;
 
     read.onloadend = function() {
         fetch(read.result).then(function(response) {
             return response.json();
         }).then(function(data) {
-            newLayer.addData(data);
+            info = isInputMultiPolygon(data);
+            
+            if (info[0]) {
+                if (info[1] == "P") {
+                    data = inputMultiPolygon(data);
+                } else if (info[1] == "L") {
+                    data = inputMultiLine(data);
+                }
+            }
+
+            console.log(JSON.stringify(data));
+
+            //newLayer.addData(data);
         })
     }
-
+    /*
     overlayMaps[selectedFile.name] = newLayer;
 
     updateSidebar();
     
     handleLayer(selectedFile.name);
+    */
 }
