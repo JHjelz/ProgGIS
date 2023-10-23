@@ -12,12 +12,12 @@ Plattformen nås via lenken: https://jshjelse.pages.stud.idi.ntnu.no/proggis/
 
 Nettsiden består av en header med diverse knapper og et større kart som dekker det meste av siden. Rundt om på siden finnes en rekke knapper med ulik funksjonalitet, inkludert en tutorial som beskriver all funksjonalitet på siden. GIS-funksjonene tilrettelagt på nettsiden er som følger:
 
-- [] Buffer
-- [] Difference
-- [] Dissolve
-- [] Extract
-- [] Intersection
-- [] Union
+- Buffer
+- Difference
+- Dissolve
+- Extract
+- Intersection
+- Union
 
 Alt av navigasjon og filhåndtering på siden fungerer via knapper og trykk fra brukeren. Data lagres i egne knapper, select- eller input-tagger, noe som gjør siden veldig forutsigbar og enkel å bruke.
 
@@ -27,11 +27,11 @@ Det er en del tilrettelagt data i applikasjonen allerede som er tilpasset riktig
 
 Ellers er det mulig å legge til egne geojson-filer til nettsida via en annen knapp i sidebaren som åpner filutforskeren til brukeren. Det forutsetter da at en har filer på rett format. Dette kan skaffes via følgende fremgangsmåte:
 
-- [] Last ned ønskede datasett fra geonorge.no på SOSI-format
-- [] Benytt SOSI2Shape for å konvertere SOSI-filer til shape-filer
-- [] Åpne shape-filene i QGIS og sett koordinatsystemet til kartet til samme som datalagene (UTM 32N, 33N eller 35N for Norge)
-- [] Klipp ut et utsnitt av datasettene om ønskelig
-- [] Eksporter datalagene som geojson og CRS: 4326 - globalt lengde- og breddegradssystem
+- Last ned ønskede datasett fra geonorge.no på SOSI-format
+- Benytt SOSI2Shape for å konvertere SOSI-filer til shape-filer
+- Åpne shape-filene i QGIS og sett koordinatsystemet til kartet til samme som datalagene (UTM 32N, 33N eller 35N for Norge)
+- Klipp ut et utsnitt av datasettene om ønskelig
+- Eksporter datalagene som geojson og CRS: 4326 - globalt lengde- og breddegradssystem
 
 Filen du nå får kan legges inn i ProgGIS via legg til-knappene i sidebaren.
 
