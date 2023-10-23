@@ -21,8 +21,6 @@ function loadExampleData() {
         overlayMaps["Bygg_f"] = Bygg_f;
         overlayMaps["Bygg_l"] = Bygg_l;
         overlayMaps["Samferdsel"] = Samferdsel;
-        overlayMaps["test1"] = test1;
-        overlayMaps["test2"] = test2;
         
         updateSidebar();
         exampleLoaded = true;
