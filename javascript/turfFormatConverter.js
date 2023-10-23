@@ -56,6 +56,7 @@ function multiPolygonToFeatureCollection(layer) {// Funksjon som gjør om featur
     if (more) {
         for (var i = 0; i < layer["features"]; i++) {
             for (var j = 0; j < layer["features"][i]["geometry"]["coordinates"].length; j++) {
+                console.log(layer["features"][i]["geometry"]["coordinates"][j]);
                 var geometry = {
                     "type": "Polygon",
                     "coordinates": layer["features"][i]["geometry"]["coordinates"][j]

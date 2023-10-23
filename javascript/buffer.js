@@ -38,8 +38,7 @@ function makeBuffer() {
         if (document.getElementById("bufferCheck").checked) { // Om en har huket av for at en skal 'dissolve' gjøres det
             // Dette er nytt:
             if (isMultiPolygon(buffer)) { // Kan ikke sende MultiPolygon inn i dissolved
-                console.log(JSON.stringify(buffer));
-                //buffer = multiPolygonToFeatureCollection(buffer);
+                buffer = multiPolygonToFeatureCollection(buffer);
             }
             // #
             /*var dissolved = turf.dissolve(buffer);
