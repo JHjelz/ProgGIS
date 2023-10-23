@@ -51,7 +51,7 @@ function isInputMultiPolygon(layer) {
 }
 
 function turnList(liste) {
-    var more = false;
+    /*var more = false;
     try {
         var test = liste[0][0][0];
         if (test != null) {
@@ -64,17 +64,17 @@ function turnList(liste) {
 
     if (more) {
         var newList = [];
-
+        console.log("JA")
         for (var i = 0; i < layer.length; i++) {
             newList.push(turnList(liste[i]));
         }
-    } else {
-        var newList = [];
+    } else {*/
+    var newList = [];
 
-        for (var i = liste.length - 1; i > -1; i--) {
-            newList.push(liste[i]);
-        }
+    for (var i = liste.length - 1; i > -1; i--) {
+        newList.push(liste[i]);
     }
+    //}
 
     return newList;
 }
@@ -111,14 +111,14 @@ function inputMultiLine(layer) {
     for (var i = 0; i < k; i++) {
         if (liste[i]["geometry"]["coordinates"].length == 1) {
             liste[i]["geometry"]["type"] = "LineString";
-            liste[i]["geometry"]["coordinates"] = turnList(liste[i]["geometry"]["coordinates"][0][0]);
+            liste[i]["geometry"]["coordinates"] = liste[i]["geometry"]["coordinates"][0];
         }
         else if (liste[i]["geometry"]["coordinates"].length > 1) {
             var coordinates = liste[i]["geometry"]["coordinates"];
             liste[i]["geometry"]["type"] = "LineString";
-            liste[i]["geometry"]["coordinates"] = turnList(coordinates[0][0]);
+            liste[i]["geometry"]["coordinates"] = coordinates[0];
             for (var j = 1; j < coordinates.length; j++) {
-                newElement = {"type": liste[i]["type"], "properties": liste[i]["properties"], "geometry": {"type": "Polygon", "coordinates": turnList(coordinates[j][0])}};
+                newElement = {"type": liste[i]["type"], "properties": liste[i]["properties"], "geometry": {"type": "LineString", "coordinates": coordinates[j]}};
                 liste.push(newElement);
             }
         }

@@ -31,16 +31,13 @@ function handleFile() {
                 }
             }
 
-            console.log(JSON.stringify(data));
-
-            //newLayer.addData(data);
+            newLayer.addData(data);
         })
     }
-    /*
+    
     overlayMaps[selectedFile.name] = newLayer;
 
     updateSidebar();
     
     handleLayer(selectedFile.name);
-    */
 }
