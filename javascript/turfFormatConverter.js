@@ -17,8 +17,24 @@ function featureCollectionToMultiPolygon(layer) { // Funksjon som gjør om featu
 }
 
 function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPolygon?
-    if (layer["geometry"]["type"] == "MultiPolygon") {
-        return true;
+    more = false;
+
+    try {
+        if (layer["features"]) {
+            more = true;
+        }
+    } catch {}
+    
+    if (more) {
+        for (var i = 0; i < layer["features"].length; i++) {
+            if (layer["features"][i]["geometry"]["type"] == "MultiPolygon") {
+                return true;
+            }
+        }
+    } else {
+        if (layer["geometry"]["type"] == "MultiPolygon") {
+            return true;
+        }
     }
     return false;
 }
