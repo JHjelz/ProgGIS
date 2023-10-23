@@ -32,6 +32,8 @@ function makeBuffer() {
     var name = document.getElementById("bufferName").value;
 
     // Prøver å kjøre buffer-funksjonen:
+    var buffer = turf.buffer(layer, distance, {units: "meters"}); // Lager buffer
+    console.log(JSON.stringify(buffer));
     try {
         var buffer = turf.buffer(layer, distance, {units: "meters"}); // Lager buffer
         
