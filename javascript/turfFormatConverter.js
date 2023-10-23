@@ -24,7 +24,7 @@ function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPoly
             more = true;
         }
     } catch {}
-    
+    console.log(more);
     if (more) {
         for (var i = 0; i < layer["features"].length; i++) {
             if (layer["features"][i]["geometry"]["type"] == "MultiPolygon") {
