@@ -24,7 +24,7 @@ function doDissolve() {
     try {
         // Dette er nytt:
         if (isMultiPolygon(layer)) {
-            layer = multiPolygonToFeatureCollection(layer);
+            layer = fixMultiPolygons(layer);
         }
         //#
 

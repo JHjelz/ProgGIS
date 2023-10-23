@@ -40,41 +40,48 @@ function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPoly
     return false;
 }
 
-function multiPolygonToFeatureCollection(layer) {// Funksjon som gjør om features i 'layer' til FeatureCollection istedenfor MultiPolygon
+function multiPolygonToFeatureCollection(layer) { // Funksjon som gjør om features i 'layer' til FeatureCollection istedenfor MultiPolygon
     // 'layer' er her et GeoJSON-lag
 
-    more = false;
-
-    try {
-        if (layer["features"]) {
-            more = true;
-        }
-    } catch {}
-    console.log(more);
-    var features = [];
-
-    if (more) {
-        for (var i = 0; i < layer["features"]; i++) {
-            for (var j = 0; j < layer["features"][i]["geometry"]["coordinates"].length; j++) {
-                console.log(layer["features"][i]["geometry"]["coordinates"][j]);
-                var geometry = {
-                    "type": "Polygon",
-                    "coordinates": layer["features"][i]["geometry"]["coordinates"][j]
-                };
-                features.push(turf.feature(geometry));
-            }
-        }
-    } else {
-        for (var i = 0; i < layer["geometry"]["coordinates"].length; i++) {
-            var geometry = {
-                "type": "Polygon",
-                "coordinates": layer["geometry"]["coordinates"][i]
-            };
-            features.push(turf.feature(geometry));
-        }
+    for (var i = 0; i < layer["geometry"]["coordinates"].length; i++) {
+        var geometry = {
+            "type": "Polygon",
+            "coordinates": layer["geometry"]["coordinates"][i]
+        };
+        features.push(turf.feature(geometry));
     }
 
     return turf.featureCollection(features);
+}
+
+function fixMultiPolygons(layer) { // Annen variant som løser MultiPolygon-problemet for buffer-funksjonen
+    var features = layer["features"];
+    var k = features.length;
+    
+    for (var i = 0; i < k; i++) {
+        if (features[i]["geometry"]["type"] == "MultiPolygon") {
+            var coord = features[i]["geometry"]["coordinates"];
+            features[i]["geometry"]["type"] = "Polygon";
+            features[i]["geometry"]["coordinates"] = coord[0];
+            for (var j = 1; j < ccoord.length; j++) {
+                newFeature = {};
+                for (key in features[i]) {
+                    if (key != "geometry") {
+                        newFeature[key] = features[i][key];
+                    }
+                }
+                newFeatures["geometry"] = {
+                    "type": "Polygon",
+                    "coordinates": coord[j]
+                };
+                features.push(newFeature);
+            }
+        }
+    }
+
+    layer["features"] = features;
+
+    return layer;
 }
 
 /*
