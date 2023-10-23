@@ -1,5 +1,6 @@
 // Variabler:
 
+// Punktene brukt i visningen av "kart 2":
 var points = {
   "type": "FeatureCollection",
   "features": [
@@ -39,8 +40,9 @@ var points = {
 };
 
 var m = "m1"; // Hvilket kart en bruker
-var layersOnMap = []; // Hvilke kartlag som var på før en byttet til "m2"
+var layersOnMap = []; // Hvilke kartlag som var på i "m1" før en byttet til "m2"
 
+// Legger til alle punktene over og setter på en popup med info-tekst:
 var NTNU_points = L.geoJSON(points).bindPopup(function(point) {return "<b>" + point.feature.properties.category + "</b>" + "<br>" + point.feature.properties.name;})
 
 // Bytter layout på nettsiden ved kartbytte

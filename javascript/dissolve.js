@@ -4,7 +4,7 @@ function doDissolve() {
 
     var regex = /^[a-zA-Z_0-9]+$/;
 
-    if (document.getElementById("dissolveSelect").value == "- - -") {
+    if (document.getElementById("dissolveSelect").value == "- - -") { // Brukeren får tilbakemelding på hva som ikke fungerer / er feil
         return alert("You need to choose a layer!");
     } else if (!document.getElementById("dissolveName").value) {
         return alert("You need to choose a name for the new layer!");
@@ -13,23 +13,26 @@ function doDissolve() {
     } else if (doLayerExist(document.getElementById("dissolveName").value)) {
         return alert("Choose another name! There exists already a layer with that name.")
     }
+    
+    // Henter input fra brukeren:
 
     var input = document.getElementById("dissolveSelect").value;
     var layer = overlayMaps[input].toGeoJSON();
     var name = document.getElementById("dissolveName").value;
     
+    // Prøver å kjøre dissolve-funksjonen:
     try {
-        var dissolved = turf.dissolve(layer);
+        var dissolved = turf.dissolve(layer); // Kjører dissolve
         var newLayer = L.geoJSON(dissolved, {style: getStyle()});
         
-        overlayMaps[name] = newLayer;
+        overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
 
-        updateSidebar();
-        handleLayer(name);
-        document.getElementById("dissolveSelect").value = "";
+        updateSidebar(); // Oppdaterer sidebaren
+        handleLayer(name); // Viser laget i kartet
+        document.getElementById("dissolveSelect").value = ""; // Tilbakestiller input-feltene fra brukeren
         document.getElementById("dissolveName").value = "";
         fillSelect("dissolveSelect");
-    } catch(failure) {
+    } catch(failure) { // Hvis det ikke går å dissolve, sendes det en feilmelding
         alert(failure);
     }
 }
