@@ -63,7 +63,7 @@ function fixMultiPolygons(layer) { // Annen variant som løser MultiPolygon-prob
             var coord = features[i]["geometry"]["coordinates"];
             features[i]["geometry"]["type"] = "Polygon";
             features[i]["geometry"]["coordinates"] = coord[0];
-            for (var j = 1; j < ccoord.length; j++) {
+            for (var j = 1; j < coord.length; j++) {
                 newFeature = {};
                 for (key in features[i]) {
                     if (key != "geometry") {
