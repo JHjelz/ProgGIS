@@ -17,7 +17,7 @@ function featureCollectionToMultiPolygon(layer) { // Funksjon som gjør om featu
 }
 
 function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPolygon?
-    more = false;
+    var more = false;
 
     try { // Justerer i forhold til hvor mye innhold 'layer' har
         if (layer["features"]) {
@@ -65,7 +65,7 @@ function fixMultiPolygons(layer) { // Annen variant som løser MultiPolygon-prob
             features[i]["geometry"]["type"] = "Polygon";
             features[i]["geometry"]["coordinates"] = coord[0];
             for (var j = 1; j < coord.length; j++) {
-                newFeature = {};
+                var newFeature = {};
                 for (key in features[i]) {
                     if (key != "geometry") {
                         newFeature[key] = features[i][key];
