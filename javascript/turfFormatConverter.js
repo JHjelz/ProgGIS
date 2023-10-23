@@ -19,7 +19,7 @@ function featureCollectionToMultiPolygon(layer) { // Funksjon som gjør om featu
 function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPolygon?
     more = false;
 
-    try {
+    try { // Justerer i forhold til hvor mye innhold 'layer' har
         if (layer["features"]) {
             more = true;
         }
@@ -41,14 +41,37 @@ function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPoly
 
 function multiPolygonToFeatureCollection(layer) {// Funksjon som gjør om features i 'layer' til FeatureCollection istedenfor MultiPolygon
     // 'layer' er her et GeoJSON-lag
+
+    more = false;
+
+    try {
+        if (layer["features"]) {
+            more = true;
+        }
+    } catch {}
+
     var features = [];
-    for (var i = 0; i < layer["geometry"]["coordinates"].length; i++) {
-        var geometry = {
-            "type": "Polygon",
-            "coordinates": layer["geometry"]["coordinates"][i]
-        };
-        features.push(turf.feature(geometry));
+
+    if (more) {
+        for (var i = 0; i < layer["features"]; i++) {
+            for (var j = 0; j < layer["features"][i]["geometry"]["coordinates"].length; j++) {
+                var geometry = {
+                    "type": "Polygon",
+                    "coordinates": layer["features"][i]["geometry"]["coordinates"][j]
+                };
+                features.push(turf.feature(geometry));
+            }
+        }
+    } else {
+        for (var i = 0; i < layer["geometry"]["coordinates"].length; i++) {
+            var geometry = {
+                "type": "Polygon",
+                "coordinates": layer["geometry"]["coordinates"][i]
+            };
+            features.push(turf.feature(geometry));
+        }
     }
+
     return turf.featureCollection(features);
 }
 
