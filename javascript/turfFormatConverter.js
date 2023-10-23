@@ -28,7 +28,6 @@ function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPoly
     if (more) {
         for (var i = 0; i < layer["features"].length; i++) {
             if (layer["features"][i]["geometry"]["type"] == "MultiPolygon") {
-                console.log("ERROR");
                 return true;
             }
         }
@@ -50,7 +49,7 @@ function multiPolygonToFeatureCollection(layer) {// Funksjon som gjør om featur
             more = true;
         }
     } catch {}
-
+    console.log(more);
     var features = [];
 
     if (more) {
