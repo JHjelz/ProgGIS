@@ -34,6 +34,7 @@ function makeBuffer() {
     // Prøver å kjøre buffer-funksjonen:
     var buffer = turf.buffer(layer, distance, {units: "meters"}); // Lager buffer
     console.log(JSON.stringify(buffer));
+    /*
     try {
         var buffer = turf.buffer(layer, distance, {units: "meters"}); // Lager buffer
         
@@ -42,8 +43,8 @@ function makeBuffer() {
             console.log(JSON.stringify(buffer));
             /*if (isMultiPolygon(buffer)) { // Kan ikke sende MultiPolygon inn i dissolved
                 buffer = multiPolygonToFeatureCollection(buffer);
-            }*/
-            // #
+            }
+            
             var dissolved = turf.dissolve(buffer);
             var newLayer = L.geoJSON(dissolved, {style: getStyle()});
         } else { // Ellers lager den bare mange ulike buffer-soner
@@ -60,4 +61,5 @@ function makeBuffer() {
     } catch(failure) { // Hvis det ikke går å lage buffer, sendes det en feilmelding
         alert(failure);
     }
+    */
 }
