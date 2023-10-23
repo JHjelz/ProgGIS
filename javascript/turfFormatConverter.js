@@ -51,31 +51,12 @@ function isInputMultiPolygon(layer) {
 }
 
 function turnList(liste) {
-    /*var more = false;
-    try {
-        var test = liste[0][0][0];
-        if (test != null) {
-            more = true;
-        }
-    } catch {
-
-        more = false;
-    }
-
-    if (more) {
-        var newList = [];
-        console.log("JA")
-        for (var i = 0; i < layer.length; i++) {
-            newList.push(turnList(liste[i]));
-        }
-    } else {*/
     var newList = [];
 
     for (var i = liste.length - 1; i > -1; i--) {
         newList.push(liste[i]);
     }
-    //}
-
+    
     return newList;
 }
 

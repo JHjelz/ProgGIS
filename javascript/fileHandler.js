@@ -35,9 +35,13 @@ function handleFile() {
         })
     }
     
-    overlayMaps[selectedFile.name] = newLayer;
+    if (doLayerExist(selectedFile.name)) {
+        return alert("This layer is already added to the map!");
+    } else {
+        overlayMaps[selectedFile.name] = newLayer;
 
-    updateSidebar();
-    
-    handleLayer(selectedFile.name);
+        updateSidebar();
+        
+        handleLayer(selectedFile.name);
+    }
 }
