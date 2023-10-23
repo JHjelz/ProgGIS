@@ -38,9 +38,9 @@ function makeBuffer() {
         if (document.getElementById("bufferCheck").checked) { // Om en har huket av for at en skal 'dissolve' gjøres det
             // Dette er nytt
             console.log(JSON.stringify(buffer));
-            if (isMultiPolygon(buffer)) { // Kan ikke sende MultiPolygon inn i dissolved
+            /*if (isMultiPolygon(buffer)) { // Kan ikke sende MultiPolygon inn i dissolved
                 buffer = multiPolygonToFeatureCollection(buffer);
-            }
+            }*/
             // #
             var dissolved = turf.dissolve(buffer);
             var newLayer = L.geoJSON(dissolved, {style: getStyle()});
