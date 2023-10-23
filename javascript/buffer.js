@@ -38,22 +38,23 @@ function makeBuffer() {
         if (document.getElementById("bufferCheck").checked) { // Om en har huket av for at en skal 'dissolve' gjøres det
             // Dette er nytt:
             if (isMultiPolygon(buffer)) { // Kan ikke sende MultiPolygon inn i dissolved
-                buffer = multiPolygonToFeatureCollection(buffer);
+                console.log(JSON.stringify(buffer));
+                //buffer = multiPolygonToFeatureCollection(buffer);
             }
             // #
-            var dissolved = turf.dissolve(buffer);
-            var newLayer = L.geoJSON(dissolved, {style: getStyle()});
+            /*var dissolved = turf.dissolve(buffer);
+            var newLayer = L.geoJSON(dissolved, {style: getStyle()});*/
         } else { // Ellers lager den bare mange ulike buffer-soner
             var newLayer = L.geoJSON(buffer, {style: getStyle()});
         }
         
-        overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
+        /*overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
         
         updateSidebar(); // Oppdaterer sidebaren
         handleLayer(name); // Viser laget i kartet
         document.getElementById("bufferDistance").value = ""; // Tilbakestiller input-feltene fra brukeren
         document.getElementById("bufferName").value = "";
-        fillSelect("bufferSelect");
+        fillSelect("bufferSelect");*/
     } catch(failure) { // Hvis det ikke går å lage buffer, sendes det en feilmelding
         alert(failure);
     }
