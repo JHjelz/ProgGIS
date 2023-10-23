@@ -16,7 +16,7 @@ var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
         subdomains:['mt0','mt1','mt2','mt3']
 });
 
-osm_map.addTo(map);
+osm_map.addTo(map); // Legger basiskartet til i kartet slik at det er det som vises først på nettsiden
 
 // Layer control er lagd i 'leafletLayerControl.js'
 
@@ -25,7 +25,7 @@ L.control.zoom({
     position:'topright'
 }).addTo(map);
 
-/* Activate and deactivate interactions in the leaflet map*/
+// Aktiverer og deaktiverer interaksjoner med leaflet-kartet:
 
 function deactivateMap() {
     map._handlers.forEach(function(handler) {

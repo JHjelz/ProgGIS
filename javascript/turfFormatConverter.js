@@ -3,7 +3,8 @@ Henter ut koordinatene fra GeoJSON-lag slik at en kan
 konvertere mellom feature collections og format godtatt av turf
 */
 
-function featureCollectionToMultiPolygon(layer) { // layer er her et GeoJSON-lag
+function featureCollectionToMultiPolygon(layer) { // Funksjon som gjør om features i 'layer' til MultiPolygon istedenfor FeatureCollection
+    // 'layer' er her et GeoJSON-lag
     if (layer["type"] == "FeatureCollection") {
         var coords = [];
         var features = layer["features"];
@@ -15,14 +16,15 @@ function featureCollectionToMultiPolygon(layer) { // layer er her et GeoJSON-lag
     }
 }
 
-function isMultiPolygon(layer) {
+function isMultiPolygon(layer) { // Inneholder 'layer' features som er MultiPolygon?
     if (layer["geometry"]["type"] == "MultiPolygon") {
         return true;
     }
     return false;
 }
 
-function multiPolygonToFeatureCollection(layer) {
+function multiPolygonToFeatureCollection(layer) {// Funksjon som gjør om features i 'layer' til FeatureCollection istedenfor MultiPolygon
+    // 'layer' er her et GeoJSON-lag
     var features = [];
     for (var i = 0; i < layer["geometry"]["coordinates"].length; i++) {
         var geometry = {
@@ -39,6 +41,7 @@ Håndtering av input-filer fra bruker for å få de på rett format egnet for tu
 */
 
 function isInputMultiPolygon(layer) {
+    // Går igjennom 'layer' (geojson-fil) og ser om det er MultiPolygons eller MultiLineStrings i den
     liste = layer["features"];
     for (var i = 0; i < liste.length; i++) {
         if (liste[i]["geometry"]["type"] == "MultiPolygon") {
@@ -51,6 +54,11 @@ function isInputMultiPolygon(layer) {
 }
 
 function turnList(liste) {
+    /*
+    Polygon i leaflet skal følge høyrehåndsregelen.
+    Ved omgjøring fra MultiPolygon til Polygon blir ikke dette riktig,
+    og en er nødt til å snu om på rekkefølgen til alle koordinatene i polygonet.
+    */
     var newList = [];
 
     for (var i = liste.length - 1; i > -1; i--) {
@@ -61,6 +69,9 @@ function turnList(liste) {
 }
 
 function inputMultiPolygon(layer) {
+    /*
+    Gjør om MultiPolygon-filer til Polygon-filer og returnerer et nytt datalag med nye features
+    */
     liste = layer["features"];
     k = liste.length;
 
@@ -86,6 +97,9 @@ function inputMultiPolygon(layer) {
 }
 
 function inputMultiLine(layer) {
+    /*
+    Gjør om MultiLineString-filer til LineString-filer og returnerer et nytt datalag med nye features
+    */
     liste = layer["features"];
     k = liste.length;
 

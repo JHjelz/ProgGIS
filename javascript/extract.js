@@ -1,11 +1,16 @@
+/*
+Her er det først to addEventListener-funksjoner som oppdaterer de ulike select-elementene i html-siden
+avhengig av hva brukeren velger av verdier på select-elementene tidligere i prosedyren.
+*/
+
 document.getElementById("extractSelect").addEventListener("change", () => {
     var input = document.getElementById("extractSelect").value;
 
-    if (input == "- - -") {
+    if (input == "- - -") { // Om det ikke er valgt noen spesifikk verdi, skal ikke det neste select-elementet fylles med noe
         var select = document.getElementById("featureSelect");
         select.innerHTML = "";
         select.add(new Option(text="- - -"));
-    } else {
+    } else { // Er det valgt noe, fylles neste med tilhørende verdier
         var layer = overlayMaps[input].toGeoJSON();
 
         var features = [];
@@ -31,11 +36,11 @@ document.getElementById("extractSelect").addEventListener("change", () => {
 document.getElementById("featureSelect").addEventListener("change", () => {
     var input = document.getElementById("extractSelect").value;
 
-    if (input == "- - -") {
+    if (input == "- - -") { // Om det ikke er valgt noen spesifikk verdi, skal ikke det neste select-elementet fylles med noe
         var select = document.getElementById("valueSelect");
         select.innerHTML = "";
         select.add(new Option(text="- - -"));
-    } else {
+    } else { // Er det valgt noe, fylles neste med tilhørende verdier
         var layer = overlayMaps[input].toGeoJSON();
         var property = document.getElementById("featureSelect").value;
 
@@ -63,7 +68,7 @@ function doExtract() {
 
     var regex = /^[a-zA-Z_0-9]+$/;
 
-    if (document.getElementById("extractSelect").value == "- - -") {
+    if (document.getElementById("extractSelect").value == "- - -") { // Brukeren får tilbakemelding på hva som ikke fungerer / er feil
         return alert("You need to choose a layer!");
     } else if (document.getElementById("featureSelect").value == "- - -") {
         return alert("You need to choose a feature!");
@@ -77,6 +82,8 @@ function doExtract() {
         return alert("Choose another name! There exists already a layer with that name.")
     }
 
+    // Henter input fra brukeren:
+
     var input = document.getElementById("extractSelect").value;
     var layer = overlayMaps[input].toGeoJSON();
     var property = document.getElementById("featureSelect").value;
@@ -85,27 +92,29 @@ function doExtract() {
 
     var extracted = [];
 
+    // Prøver å kjøre extract-funksjonen:
     try {
-        for (element in layer["features"]) {
+        for (element in layer["features"]) { // Henter alle elementer i kartlaget med attributtverdier som matcher brukers input
             if (layer["features"][element]["properties"][property] == value) {
                 extracted.push(layer["features"][element]);
             }
         }
-        var extract = turf.featureCollection(extracted);
+        var extract = turf.featureCollection(extracted); // Lager nytt featureCollection-element av de utvalgte elementene
 
         var newLayer = new L.GeoJSON(extract, {style: getStyle()});
 
-        overlayMaps[name] = newLayer;
+        overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
         
-        updateSidebar();
-        handleLayer(name);
-        document.getElementById("extractName").value = "";
+        updateSidebar(); // Oppdaterer sidebaren
+        handleLayer(name); // Viser laget i kartet
+        document.getElementById("extractName").value = ""; // Tilbakestiller input-feltene fra brukeren
         resetInput();
-    } catch(failure) {
+    } catch(failure) { // Hvis det ikke går å kjøre extraction, sendes det en feilmelding
         alert(failure);
     }
 }
 
+// Funksjon for å resette brukerens input:
 function resetInput() {
     fillSelect("extractSelect");
 

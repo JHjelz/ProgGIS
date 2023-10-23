@@ -10,7 +10,7 @@ function makeBuffer() {
     var regex_1 = /^[0-9]+$/;
     var regex_2 = /^[a-zA-Z_0-9]+$/;
     
-    if (document.getElementById("bufferSelect").value == "- - -") {
+    if (document.getElementById("bufferSelect").value == "- - -") { // Brukeren får tilbakemelding på hva som ikke fungerer / er feil
         return alert("You need to choose a layer!");
     } else if (!document.getElementById("bufferDistance").value) {
         return alert("You need to set a distance as an integer!");
@@ -24,33 +24,32 @@ function makeBuffer() {
         return alert("Choose another name! There exists already a layer with that name.")
     }
 
+    // Henter input fra brukeren:
+
     var input = document.getElementById("bufferSelect").value;
     var layer = overlayMaps[input].toGeoJSON();
     var distance = parseFloat(document.getElementById("bufferDistance").value);
     var name = document.getElementById("bufferName").value;
 
+    // Prøver å kjøre buffer-funksjonen:
     try {
-        var buffer = turf.buffer(layer, distance, {units: "meters"});
+        var buffer = turf.buffer(layer, distance, {units: "meters"}); // Lager buffer
         
-        /*
-        Funker ikke for 'Samferdsel'-laget med buffer-distanse mellom 68 og 101 meter.
-        */
-
-        if (document.getElementById("bufferCheck").checked) {
+        if (document.getElementById("bufferCheck").checked) { // Om en har huket av for at en skal 'dissolve' gjøres det
             var dissolved = turf.dissolve(buffer);
             var newLayer = L.geoJSON(dissolved, {style: getStyle()});
-        } else {
+        } else { // Ellers lager den bare mange ulike buffer-soner
             var newLayer = L.geoJSON(buffer, {style: getStyle()});
         }
         
-        overlayMaps[name] = newLayer;
+        overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
         
-        updateSidebar();
-        handleLayer(name);
-        document.getElementById("bufferDistance").value = "";
+        updateSidebar(); // Oppdaterer sidebaren
+        handleLayer(name); // Viser laget i kartet
+        document.getElementById("bufferDistance").value = ""; // Tilbakestiller input-feltene fra brukeren
         document.getElementById("bufferName").value = "";
         fillSelect("bufferSelect");
-    } catch(failure) {
+    } catch(failure) { // Hvis det ikke går å lage buffer, sendes det en feilmelding
         alert(failure);
     }
 }

@@ -1,27 +1,27 @@
-var boolskNav = false; /* boolsk verdi som forteller om en sidebar er åpen foran kartet */
-var boolskBox = false; /* boolsk verdi som forteller om en boks er åpen foran kartet */
-var box = null; /* Streng som forteller hvilken boks-id som er åpen */
+var boolskNav = false; // boolsk verdi som forteller om en sidebar er åpen foran kartet
+var boolskBox = false; // boolsk verdi som forteller om en boks er åpen foran kartet
+var box = null; // Streng som forteller hvilken boks-id som er åpen
 
-/* Set the width of the sidebar to 25vw */
+// Setter bredden til sidebaren til 25 vw
 function openNav() {
-    if (boolskBox) {
+    if (boolskBox) { // Om en boks er åpen må den lukkes først
         closeBox(box);
     }
     document.getElementById("dataLayers").style.width = "25vw";
     boolskNav = true;
 }
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+// Setter bredden til sidebaren til 0 og left margin til sidens innhold til 0
 function closeNav() {
     document.getElementById("dataLayers").style.width = "0vw";
     boolskNav = false;
 }
 
-function openBox(id) {
-    if (boolskBox) {
+function openBox(id) { // Åpner aktuell boks (id)
+    if (boolskBox) { // Om en annen boks er åpen, må den lukkes først
         closeBox(box);
     }
-    if (boolskNav) {
+    if (boolskNav) { // Sidebaren må også lukkes
         closeNav();
     }
 
@@ -43,12 +43,12 @@ function openBox(id) {
     document.getElementById(String(id)).style.width = "40vw";
     document.getElementById(String(id)).style.height = "40vh";
     document.getElementById(String(id)).style.borderWidth = "20px";
-    boolskBox = true;
-    box = id;
-    deactivateMap();
+    boolskBox = true; // Forteller at en boks er åpen
+    box = id; // ... og hvilken boks
+    deactivateMap(); // Deaktiverer funksjonalitet i kartet mens en boks er åpen
 }
 
-function closeBox(id) {
+function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva openBox gjør
     document.getElementById(String(id)).style.width = "0vw";
     document.getElementById(String(id)).style.height = "0vh";
     document.getElementById(String(id)).style.borderWidth = "0px";

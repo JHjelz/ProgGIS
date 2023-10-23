@@ -16,6 +16,8 @@ function getStyle() {
         "color": colors[count]
     };
 
+    // Lagene får bare en tilfeldig farge basert på telleren og fargene i listen over
+    
     count++;
     if (count == colors.length) {
         count = 0;

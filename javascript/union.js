@@ -4,7 +4,7 @@ function makeUnion() {
 
     var regex = /^[a-zA-Z_0-9]+$/;
 
-    if (document.getElementById("unionSelect_1").value == "- - -") {
+    if (document.getElementById("unionSelect_1").value == "- - -") { // Brukeren får tilbakemelding på hva som ikke fungerer / er feil
         return alert("You need to choose the first layer!");
     } else if (document.getElementById("unionSelect_2").value == "- - -") {
         return alert("You need to choose the secondt layer!");
@@ -18,32 +18,34 @@ function makeUnion() {
         return alert("Choose another name! There exists already a layer with that name.")
     }
 
+    // Henter input fra brukeren:
+
     var input1 = document.getElementById("unionSelect_1").value;
     var layer1 = overlayMaps[input1].toGeoJSON();
     var input2 = document.getElementById("unionSelect_2").value;
     var layer2 = overlayMaps[input2].toGeoJSON();
     var name = document.getElementById("unionName").value;
 
-    // Må konverteres fra feature collection til multipolygon:
+    // Må konverteres fra FeatureCollection til MultiPolygon:
     var multiPolygon1 = featureCollectionToMultiPolygon(layer1);
     var multiPolygon2 = featureCollectionToMultiPolygon(layer2);
     
     try {
-        var union = turf.union(multiPolygon1, multiPolygon2);
+        var union = turf.union(multiPolygon1, multiPolygon2); // Lager unionen
 
         if (isMultiPolygon(union)) {
-            union = multiPolygonToFeatureCollection(union);
+            union = multiPolygonToFeatureCollection(union); // Konverterer tilbake til FeatureCollection
         }
 
         var newLayer = L.geoJSON(union, {style: getStyle()});
 
-        overlayMaps[name] = newLayer;
+        overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
 
-        updateSidebar();
-        handleLayer(name);
-        document.getElementById("unionName").value = "";
+        updateSidebar(); // Oppdaterer sidebaren
+        handleLayer(name); // Viser laget i kartet
+        document.getElementById("unionName").value = ""; // Tilbakestiller input-feltene fra brukeren
         fillDoubleSelect("unionSelect");
-    } catch(failure) {
+    } catch(failure) { // Hvis det ikke går å lage union, sendes det en feilmelding
         alert(failure);
     }
 }

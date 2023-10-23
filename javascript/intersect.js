@@ -4,7 +4,7 @@ function makeIntersection() {
 
     var regex = /^[a-zA-Z_0-9]+$/;
 
-    if (document.getElementById("intersectionSelect_1").value == "- - -") {
+    if (document.getElementById("intersectionSelect_1").value == "- - -") { // Brukeren får tilbakemelding på hva som ikke fungerer / er feil
         return alert("You need to choose the first layer!");
     } else if (document.getElementById("intersectionSelect_2").value == "- - -") {
         return alert("You need to choose the secondt layer!");
@@ -18,6 +18,8 @@ function makeIntersection() {
         return alert("Choose another name! There exists already a layer with that name.")
     }
 
+    // Henter input fra brukeren:
+
     var input1 = document.getElementById("intersectionSelect_1").value;
     var layer1 = overlayMaps[input1].toGeoJSON();
     var input2 = document.getElementById("intersectionSelect_2").value;
@@ -28,22 +30,23 @@ function makeIntersection() {
     var multiPolygon1 = featureCollectionToMultiPolygon(layer1);
     var multiPolygon2 = featureCollectionToMultiPolygon(layer2);
     
+    // Prøver å kjøre intersect-funksjonen:
     try {
-        var intersection = turf.intersect(multiPolygon1, multiPolygon2);
+        var intersection = turf.intersect(multiPolygon1, multiPolygon2); // Lager intersection
         
-        if (isMultiPolygon(intersection)) {
+        if (isMultiPolygon(intersection)) { // Må konvertere tilbake til featureCollection
             intersection = multiPolygonToFeatureCollection(intersection);
         }
 
         var newLayer = new L.GeoJSON(intersection, {style: getStyle()});
         
-        overlayMaps[name] = newLayer;
+        overlayMaps[name] = newLayer; // Det nye laget legges til i dictionarien med alle kartlagene
 
-        updateSidebar();
-        handleLayer(name);
-        document.getElementById("intersectionName").value = "";
+        updateSidebar(); // Oppdaterer sidebaren
+        handleLayer(name); // Viser laget i kartet
+        document.getElementById("intersectionName").value = ""; // Tilbakestiller input-feltene fra brukeren
         fillDoubleSelect("intersectionSelect");
-    } catch(failure) {
+    } catch(failure) { // Hvis det ikke går å lage intersection, sendes det en feilmelding
         alert(failure);
     }
 }

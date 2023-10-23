@@ -5,6 +5,8 @@ Det fungerer ikke å lese fra fil ved å kun kjøre html-filen lokalt
 Har derfor brukt litt eksempeldata fra koden
 */
 
+// Her lages leaflet-lagene ved å hente geo-data fra egne geojson-filer
+
 var Arealdekke = L.geoJSON(null, {style: getStyle()});
 var Bygg_f = L.geoJSON(null, {style: getStyle()});
 var Bygg_l = L.geoJSON(null, {style: getStyle()});
