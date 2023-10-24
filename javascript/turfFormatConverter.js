@@ -71,7 +71,7 @@ function fixMultiPolygons(layer) { // Annen variant som løser MultiPolygon-prob
                         newFeature[key] = features[i][key];
                     }
                 }
-                newFeatures["geometry"] = {
+                newFeature["geometry"] = {
                     "type": "Polygon",
                     "coordinates": coord[j]
                 };
