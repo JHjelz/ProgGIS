@@ -55,32 +55,39 @@ function multiPolygonToFeatureCollection(layer) { // Funksjon som gjør om featu
     return turf.featureCollection(features);
 }
 
-function fixMultiPolygons(layer) { // Annen variant som løser MultiPolygon-problemet for buffer-funksjonen
+function fixMultiPolygons(layer) { // Annen variant som løser MultiPolygon-problemet for de ulike GIS-funksjonene
     var features = layer["features"];
     var k = features.length;
     
     for (var i = 0; i < k; i++) {
-        if (features[i]["geometry"]["type"] == "MultiPolygon") {
-            var coord = features[i]["geometry"]["coordinates"];
+        /*
+        Her itererer en gjennom alle features i FeatureCollection,
+        plukker ut alle features som er registrert som MultiPolygon,
+        og gjør dem om til flere Polygons
+        */
+        if (features[i]["geometry"]["type"] == "MultiPolygon") { // Er det MultiPolygon?
+            var coord = features[i]["geometry"]["coordinates"]; // Henter geometrien til alle Polygonene
+            // Oppdaterer første polygon:
             features[i]["geometry"]["type"] = "Polygon";
             features[i]["geometry"]["coordinates"] = coord[0];
             for (var j = 1; j < coord.length; j++) {
+                // Lager så nye features for resten av polygonene i MultiPolygonet:
                 var newFeature = {};
-                for (key in features[i]) {
-                    if (key != "geometry") {
+                for (key in features[i]) { // Vil ha de samme nøklene og deres verdier som originalen
+                    if (key != "geometry") { // ... men ikke lik geometri
                         newFeature[key] = features[i][key];
                     }
                 }
-                newFeature["geometry"] = {
+                newFeature["geometry"] = { // Legger til geometri
                     "type": "Polygon",
-                    "coordinates": coord[j]
+                    "coordinates": coord[j] // Henter koordinat fra original-lista
                 };
-                features.push(newFeature);
+                features.push(newFeature); // Legger til ny feature
             }
         }
     }
 
-    layer["features"] = features;
+    layer["features"] = features; // Oppdaterer features-lista
 
     return layer;
 }

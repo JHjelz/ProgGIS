@@ -36,11 +36,11 @@ function makeBuffer() {
         var buffer = turf.buffer(layer, distance, {units: "meters"}); // Lager buffer
         
         if (document.getElementById("bufferCheck").checked) { // Om en har huket av for at en skal 'dissolve' gjøres det
-            // Dette er nytt:
+            
             if (isMultiPolygon(buffer)) { // Kan ikke sende MultiPolygon inn i dissolved
                 buffer = fixMultiPolygons(buffer);
             }
-            // #
+            
             var dissolved = turf.dissolve(buffer);
             var newLayer = L.geoJSON(dissolved, {style: getStyle()});
         } else { // Ellers lager den bare mange ulike buffer-soner
