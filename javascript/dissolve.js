@@ -22,6 +22,11 @@ function doDissolve() {
     
     // Prøver å kjøre dissolve-funksjonen:
     try {
+        
+        if (isMultiPolygon(layer)) { // Kan ikke sende MultiPolygon inn i dissolved
+            layer = fixMultiPolygons(layer);
+        }
+
         var dissolved = turf.dissolve(layer); // Kjører dissolve
         var newLayer = L.geoJSON(dissolved, {style: getStyle()});
         
