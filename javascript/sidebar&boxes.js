@@ -75,7 +75,7 @@ function fillSelect(id) {
     select.add(new Option(text="- - -"));
     
     for (key in overlayMaps) {
-        if (id == "bufferSelect") {
+        if (id == "bufferSelect" || id == "extractSelect") {
             select.add(new Option(text = key, value = key));
         }
         else if (id != "bufferSelect" && isPolygon(overlayMaps[key])) {
