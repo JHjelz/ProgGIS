@@ -60,12 +60,15 @@ function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva 
 // Fyller select i de ulike boksene med alternativ:
 
 function isPolygon(layer) {
-    var objects = layer.toGeoJSON()["features"];
+    console.log(layer);
+    /*
+    var objects = layer["features"];
     for (o in objects) {
         if (o["geometry"]["type"] == "Polygon") {
             return true;
         }
     }
+    */
     return false;
 }
 
@@ -78,7 +81,7 @@ function fillSelect(id) {
         if (id == "bufferSelect" || id == "extractSelect") {
             select.add(new Option(text = key, value = key));
         }
-        else if (isPolygon(overlayMaps[key])) {
+        else if (isPolygon(overlayMaps[key].toGeoJSON())) {
             select.add(new Option(text = key, value = key));
         }
     }
