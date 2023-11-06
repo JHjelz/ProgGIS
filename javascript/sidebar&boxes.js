@@ -61,7 +61,7 @@ function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva 
 
 function isPolygon(layer) {
     console.log(JSON.stringify(layer));
-    var objects = layer["features"];
+    var objects = layer.toGeoJSON()["features"];
     for (o in objects) {
         if (o["geometry"]["type"] == "Polygon") {
             return true;
