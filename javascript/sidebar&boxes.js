@@ -59,13 +59,28 @@ function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva 
 
 // Fyller select i de ulike boksene med alternativ:
 
+function isPolygon(layer) {
+    var objects = layer["features"];
+    for (var i = 0; i < objects.lenght; i++) {
+        if (objects[i]["geometry"]["type"] == "Polygon") {
+            return true;
+        }
+    }
+    return false;
+}
+
 function fillSelect(id) {
     var select = document.getElementById(id);
     select.innerHTML = "";
     select.add(new Option(text="- - -"));
     
     for (key in overlayMaps) {
-        select.add(new Option(text = key, value = key));
+        if (id == "bufferSelect") {
+            select.add(new Option(text = key, value = key));
+        }
+        else if (id != "bufferSelect" && isPolygon(overlayMaps[key])) {
+            select.add(new Option(text = key, value = key));
+        }
     }
 }
 
