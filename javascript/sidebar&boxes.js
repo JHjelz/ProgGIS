@@ -61,7 +61,7 @@ function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva 
 
 function isPolygon(layer) {
     var objects = layer["features"];
-    for (var i = 0; i < objects.lenght; i++) {
+    for (var i = 0; i < objects.lenght(); i++) {
         if (objects[i]["geometry"]["type"] == "Polygon") {
             return true;
         }
