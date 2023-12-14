@@ -1,27 +1,34 @@
 // Her farges alle lagene i kartet
 
-var count = 0;
+var a = 0;
+var b = 0;
+var c = 0;
 
-var colors = [
-"blue",
-"red",
-"yellow",
-"green",
-"purple",
-"orange",
-];
+function RandomInt() {
+    return Math.floor(Math.random() * 256)
+}
 
 function getStyle() {
-    var myStyle = {
-        "color": colors[count]
-    };
-
-    // Lagene får bare en tilfeldig farge basert på telleren og fargene i listen over
     
-    count++;
-    if (count == colors.length) {
-        count = 0;
+    a += RandomInt();
+    b += RandomInt();
+    c += RandomInt();
+
+    if (a > 255) {
+        a = 0;
+    } else if (b > 255) {
+        b = 0;
+    } else if (c > 255) {
+        c = 0;
     }
 
+    var myStyle = {
+        "color": "rgb(" + a.toString() + "," + b.toString() + "," + c.toString() + ")"
+    };
+
     return myStyle
+}
+
+function changeColor(name) {
+    overlayMaps[name].setStyle(getStyle());
 }
