@@ -36,6 +36,11 @@ function openBox(id) { // Åpner aktuell boks (id)
         fillSelect("extractSelect");
     } else if (id == "intersectionBox") {
         fillDoubleSelect("intersectionSelect");
+    } else if (id == "suitabilityBox") {
+        var numb = document.getElementById("priorityDiv").childElementCount;
+        for (var i=1; i<=numb; i++) {
+            fillSelect("priority" + i.toString());
+        }
     } else if (id == "unionBox") {
         fillDoubleSelect("unionSelect");
     }
