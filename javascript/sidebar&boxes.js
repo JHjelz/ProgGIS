@@ -61,8 +61,8 @@ function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva 
 
 function isPolygon(layer) {
     var objects = layer["features"];
-    for (var i = 0; i < objects.lenght; i++) {
-        if (objects[i]["geometry"]["type"] == "Polygon") {
+    for (o of objects) {
+        if (o["geometry"]["type"] == "Polygon") {
             return true;
         }
     }
@@ -75,10 +75,10 @@ function fillSelect(id) {
     select.add(new Option(text="- - -"));
     
     for (key in overlayMaps) {
-        if (id == "bufferSelect") {
+        if (id == "bufferSelect" || id == "extractSelect") {
             select.add(new Option(text = key, value = key));
         }
-        else if (id != "bufferSelect" && isPolygon(overlayMaps[key])) {
+        else if (isPolygon(overlayMaps[key].toGeoJSON())) {
             select.add(new Option(text = key, value = key));
         }
     }
@@ -93,7 +93,9 @@ function fillDoubleSelect(id) {
     select2.add(new Option(text="- - -"));
 
     for (key in overlayMaps) {
-        select1.add(new Option(text = key, value = key));
-        select2.add(new Option(text = key, value = key));
+        if (isPolygon(overlayMaps[key].toGeoJSON())) {
+            select1.add(new Option(text = key, value = key));
+            select2.add(new Option(text = key, value = key));
+        }
     }
 }
