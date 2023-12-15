@@ -31,7 +31,7 @@ p {
 
 .box1 {
     display: flex;
-    flex-grow: 7;
+    flex-grow: 8;
     flex-direction: row;
 }
 

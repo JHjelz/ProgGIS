@@ -85,7 +85,7 @@ function checkExampleData() {
 
     exampleLoaded = false;
     document.getElementById("exampleData").style.display = "block";
-    document.getElementById("layers").style.height = "53vh";
+    document.getElementById("layers").style.height = "52vh";
 }
 
 function handleLayer(name) { // Funksjon som viser og skjuler kartlag i kartet og endrer farge på knappene i sidebaren avhengig av lagets synlighet
@@ -116,6 +116,15 @@ function handleLayer(name) { // Funksjon som viser og skjuler kartlag i kartet o
 function doLayerExist(name) {
     for (key in overlayMaps) {
         if (key == name) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function doLayerExist2(name) {
+    for (key in overlayMaps) {
+        if (key.toString().slice(0, -1) == name) {
             return true;
         }
     }
