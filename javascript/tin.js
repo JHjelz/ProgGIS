@@ -2,17 +2,22 @@
 
 var isTIN = false // Vises TIN'et i kartet?
 
-// Selve TIN'et:
-var TINPolygons = turf.tin(NTNU_points.toGeoJSON());
-var TINGeoJSON = L.geoJSON(TINPolygons, {style: {"color": "orangered"}});
+var TINPolygons = null;
+var TINGeoJSON = null;
 
 // Funksjon for å slå av og på TIN'et:
 function TIN() {
-    if (isTIN) {
-        map.removeLayer(TINGeoJSON);
-        isTIN = false;
-    } else {
-        TINGeoJSON.addTo(map);
-        isTIN = true;
+    if (points != null) {
+        if (isTIN && TINGeoJSON != null) {
+            map.removeLayer(TINGeoJSON);
+            isTIN = false;
+        } else {
+            // Selve TIN'et:
+            TINPolygons = turf.tin(points.toGeoJSON());
+            TINGeoJSON = L.geoJSON(TINPolygons, {style: {"color": "orangered"}});
+
+            TINGeoJSON.addTo(map);
+            isTIN = true;
+        }
     }
 }
