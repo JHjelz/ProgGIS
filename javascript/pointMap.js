@@ -1,5 +1,5 @@
 // Punktene brukt i visningen av "kart 2":
-var NTNU_points = {
+var NTNU_points_2 = {
     "type": "FeatureCollection",
     "features": [
         {"type": "Feature", "geometry": {"type": "Point", "coordinates": [10.4044907, 63.4173049]}, "properties": {"category": "Universitet", "name": "NTNU Gløshaugen"}},
@@ -37,6 +37,14 @@ var NTNU_points = {
     ]
 };
 
+var NTNU_points = L.geoJSON(null);
+
+fetch("javascript/exampleData/Arealdekke_klippa.geojson").then(function(response) {
+    return response.json();
+}).then(function(data) {
+    NTNU_points.addData(data).bindPopup(function(point) {return `<b>${point.feature.properties.category}</b><br>${point.feature.properties.name}`});
+})
+
 // Initialiserer punkt-laget:
 var points = null;
 
@@ -57,6 +65,9 @@ function addPoint() {
     }
     if (isVoronoi) {
         voronoi();
+    }
+    if (isHeat) {
+        heatmap();
     }
 }
 
@@ -110,7 +121,10 @@ function savePoint() {
 
 function handleDefaultPoints() {
     if (points != null) {
-        if (map.hasLayer(points)){
+        if (!map.hasLayer(points)) {
+            points.addTo(map);
+        }
+        if (map.hasLayer(points)) {
             document.getElementById("examplePoints").style.display = "inline-block";
             document.getElementById("loadPoints").style. display = "inline-block";
             document.getElementById("savePoints").style.display = "none";
@@ -130,6 +144,8 @@ function handleDefaultPoints() {
 
             // Fjerner punktene:
             map.removeLayer(points);
+            document.getElementById("showPoints").style.display = "none";
+            document.getElementById("hidePoints").style.display = "none";
             points = null;
 
             closeBox('loadPointsBox')
@@ -138,8 +154,10 @@ function handleDefaultPoints() {
         pointsExists();
 
         // Legger til alle punktene fra default-fila og setter på en popup med info-tekst:
-        points = L.geoJSON(NTNU_points).bindPopup(function(point) {return `<b>${point.feature.properties.category}</b><br>${point.feature.properties.name}`});
-        
+
+        //points = L.geoJSON(NTNU_points_2).bindPopup(function(point) {return `<b>${point.feature.properties.category}</b><br>${point.feature.properties.name}`});
+        points = NTNU_points;
+
         // Legger til nye punkt-markører i kartet:
         points.addTo(map);
 
@@ -191,6 +209,7 @@ function pointsExists() {
     document.getElementById("fileName").style.display = "inline-block";
     document.getElementById("save").style.display = "inline-block";
     document.getElementById("removePoints").style.display = "inline-block";
+    document.getElementById("showPoints").style.display = "block";
 }
 
 function saveToFile() {
@@ -210,4 +229,18 @@ function saveToFile() {
     }), file);
 
     document.getElementById("fileName").value = "";
+}
+
+function showPoints() {
+    if (points != null) {
+        points.addTo(map);
+        document.getElementById("showPoints").style.display = "block";
+        document.getElementById("hidePoints").style.display = "none";
+    }
+}
+
+function hidePoints() {
+    map.removeLayer(points);
+    document.getElementById("showPoints").style.display = "none";
+    document.getElementById("hidePoints").style.display = "block";
 }
