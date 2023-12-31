@@ -46,6 +46,8 @@ function changeMap() {
     document.getElementById("sidebarOpener").style.display = "block";
     document.getElementById("pointOpener").style.display = "none";
     document.getElementById("addPointButton").style.display = "none";
+    document.getElementById("showPoints").style.display = "none";
+    document.getElementById("hidePoints").style.display = "none";
 
     // Fjerner punkt-markørene og eventuelle voronoi- og TIN-diagram fra kartet:
     if (isVoronoi) {
@@ -59,7 +61,10 @@ function changeMap() {
     }
 
     if (points != null) {
-      if (map.hasLayer(points)) {
+      if (points != null) {
+          if (!map.hasLayer(points)) {
+            points.addTo(map);
+          }
           handleDefaultPoints();
       }
     }
