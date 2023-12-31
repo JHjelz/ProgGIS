@@ -1,5 +1,4 @@
 // Punktene brukt i visningen av "kart 2":
-/*
 var NTNU_points = {
     "type": "FeatureCollection",
     "features": [
@@ -37,7 +36,6 @@ var NTNU_points = {
         {"type": "Feature", "geometry": {"type": "Point", "coordinates": [10.4003657, 63.4117822]}, "properties": {"category": "Studentby", "name": "Lerkendal Studentby"}}
     ]
 };
-*/
 
 // Initialiserer punkt-laget:
 var points = null;
@@ -140,16 +138,7 @@ function handleDefaultPoints() {
         pointsExists();
 
         // Legger til alle punktene fra default-fila og setter på en popup med info-tekst:
-        
-        
-        fetch("javascript/exampleData/points.geojson").then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            points.addData(data).bindPopup(function(point) {return "<b>" + point.feature.properties.category + "</b>" + "<br>" + point.feature.properties.name});
-        })
-        
-
-        //points = L.geoJSON(NTNU_points).bindPopup(function(point) {return `<b>${point.feature.properties.category}</b><br>${point.feature.properties.name}`});
+        points = L.geoJSON(NTNU_points).bindPopup(function(point) {return `<b>${point.feature.properties.category}</b><br>${point.feature.properties.name}`});
         
         // Legger til nye punkt-markører i kartet:
         points.addTo(map);
@@ -177,6 +166,12 @@ document.getElementById("fileInput2").addEventListener("change", () => {
             fetch(read.result).then(function(response) {
                 return response.json();
             }).then(function(data) {
+                for (feature in data.features) {
+                    if (data.features[feature].geometry.type != "Point") {
+                        handleDefaultPoints();
+                        return alert("The chosen file does not only contain points!");
+                    }
+                }
                 newLayer.addData(data).bindPopup(function(point) {return "<b>" + point.feature.properties.category + "</b>" + "<br>" + point.feature.properties.name});
             })
         }
