@@ -1,7 +1,7 @@
 // Punktene brukt i visningen av "kart 2":
 var NTNU_points = L.geoJSON(null);
 
-fetch("javascript/exampleData/Arealdekke_klippa.geojson").then(function(response) {
+fetch("javascript/exampleData/NTNU_points.geojson").then(function(response) {
     return response.json();
 }).then(function(data) {
     NTNU_points.addData(data).bindPopup(function(point) {return `<b>${point.feature.properties.category}</b><br>${point.feature.properties.name}`});
