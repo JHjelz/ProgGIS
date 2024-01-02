@@ -30,5 +30,31 @@ function getStyle() {
 }
 
 function changeColor(name) {
-    overlayMaps[name].setStyle(getStyle());
+    document.getElementById("layerNameColor").value = name;
+    document.getElementById("R").value = a;
+    document.getElementById("G").value = b;
+    document.getElementById("B").value = c;
+    document.getElementById("RText").value = a;
+    document.getElementById("GText").value = b;
+    document.getElementById("BText").value = c;
+    document.getElementById("paintLayer").style.backgroundColor = "rgb(" + document.getElementById("R").value + "," + document.getElementById("G").value + "," + document.getElementById("B").value + ")";
+    openBox("colorBox");
+}
+
+function updateValue(element) {
+    var text = element + "Text";
+    document.getElementById(text).value = document.getElementById(element).value;
+    document.getElementById("paintLayer").style.backgroundColor = "rgb(" + document.getElementById("R").value + "," + document.getElementById("G").value + "," + document.getElementById("B").value + ")";
+}
+
+function paint() {
+    a = document.getElementById("R").value;
+    b = document.getElementById("G").value;
+    c = document.getElementById("B").value;
+
+    var newStyle = {
+        "color": "rgb(" + a.toString() + "," + b.toString() + "," + c.toString() + ")"
+    };
+    overlayMaps[document.getElementById("layerNameColor").value].setStyle(newStyle);
+    closeBox("colorBox");
 }
