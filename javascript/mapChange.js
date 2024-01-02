@@ -59,6 +59,11 @@ function changeMap() {
     if (isHeat) {
       heatmap();
     }
+    if (newPoint) {
+      newPoint = false;
+      closeBox("makeNewPointBox");
+      document.getElementById("addPointButton").style.color = "orangered";
+    }
 
     if (points != null) {
       if (points != null) {
