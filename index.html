@@ -312,6 +312,36 @@
 
                         <button id="savePoint" class="onClick" style="margin-top: 2vh;" onclick="savePoint()">Save point</button>
                     </div>
+
+                    <div id="colorBox" class="box">
+                        <div class="box3">
+                            <h1 style="font-size: 4vh; text-align: center; width: 36vw;">New color</h1>
+
+                            <svg style="cursor: pointer; padding-top: 15px;" onclick="closeBox('colorBox')"
+                            xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                        </div>
+
+                        <p>Map layer: <input id="layerNameColor" readonly></p>
+
+                        <label for="R">R</label>
+                        <input type="range" id="R" name="R" min="0" max="255" step="1" onchange="updateValue('R')">
+                        <input type="text" id="RText" readonly>
+                        <br>
+
+                        <label for="G">G</label>
+                        <input type="range" id="G" name="G" min="0" max="255" step="1" onchange="updateValue('G')">
+                        <input type="text" id="GText" readonly>
+                        <br>
+
+                        <label for="B">B</label>
+                        <input type="range" id="B" name="B" min="0" max="255" step="1" onchange="updateValue('B')">
+                        <input type="text" id="BText" readonly>
+                        <br>
+
+                        <button id="paintLayer" class="onClick" style="margin-top: 5vh;" onclick="paint()">Paint</button>
+                    </div>
                 </div>
 
                 <div class="box2">
