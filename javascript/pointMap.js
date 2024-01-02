@@ -22,6 +22,10 @@ function addPoint() {
     document.getElementById("addPointButton").style.color = "green";
     newPoint = true;
 
+    if (!map.hasLayer(points)) {
+        showPoints();
+    }
+
     if (isTIN) {
         TIN();
     }
