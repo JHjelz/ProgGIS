@@ -1,48 +1,57 @@
 # ProgGis
 
-## Hva er ProgGIS?
+## What is ProgGIS?
 
-ProgGIS er resultatet av en arbeidsprosess med faget TBA4251 Programmering i Geomatikk med den hensikt å utvikle en webapplikasjon som benytter kart og geografisk informasjon.
+ProgGIS is the result from the project in subject TBA4251 Programming in Geomatics with the purpose of developing a webapplication that uses map and geographic information.
 
-ProgGIS er en enkel GIS-plattform egnet for å lære om hva et GIS er for noe og hvordan det fungerer. Plattformen er nettbasert og trenger ingen forhåndsinnstallasjoner om en bare skal lære seg hvordan GIS fungerer - altså egnet for hvem som helst med kartinteresser!
+ProgGIS is a basic GIS-platform suitable for learning what a GIS is and how it works. The platform is web-based and does not need any pre-installations if you only want to learn how GIS works - therefor suitable for anyone with map interests!
 
-## Hvordan fungerer det?
+## How does it work?
 
-Plattformen nås via lenken: https://jshjelse.pages.stud.idi.ntnu.no/proggis/
+The platform is reached through the link: https://jshjelse.pages.stud.idi.ntnu.no/proggis/
 
-Nettsiden består av en header med diverse knapper og et større kart som dekker det meste av siden. Rundt om på siden finnes en rekke knapper med ulik funksjonalitet, inkludert en tutorial som beskriver all funksjonalitet på siden. GIS-funksjonene tilrettelagt på nettsiden er som følger:
+The webpage consists of a header with several buttons and a large map covering almost the whole page. Around the page do there exist a lot of buttons with different functionality, including a tutorial that describes all functionality of the page. The GIS functions arranged on the webpage is as follow:
 
 - Buffer
 - Difference
 - Dissolve
 - Extract
 - Intersection
+- Suitability
 - Union
 
-Alt av navigasjon og filhåndtering på siden fungerer via knapper og trykk fra brukeren. Data lagres i egne knapper, select- eller input-tagger, noe som gjør siden veldig forutsigbar og enkel å bruke.
+The webpage has also an user interface intended for point analyzes. This part of the application is reached via the pin at bottom left and it reorganizes the webpage. On this page can you either import some pre-defined points, upload your own point files, or add your own points manually. In addition, the following analysis tools are provided:
+
+- TIN
+- Voronoi-diagram
+- Heatmap
+
+Further instructions are described in a separate tutorial box.
+
+Everything of navigation and file management on the webpage works via buttons and click events from the user. Data is saved in own buttons, select- or input-tags, something that makes the page very predictable and easy to use. There are no database or server connected to the webpage, so you cannot save something to further work - everything are reset if you refresh the page.
 
 ### Data
 
-Det er en del tilrettelagt data i applikasjonen allerede som er tilpasset riktig format for sida. Det vil si at den geografiske dataen er på geojson-format med lengde- og breddegradssystemet som koordinatsystem. Denne dataen kan enkelt åpnes via en knapp i sidebaren.
+It is some pre-defined / arranged data in the applications that are customized the correct format to the page. This means that the geographic data is on geojson-format with latitude and longditude as coordinate system. This data can easily be opened via a button in the sidebar.
 
-Ellers er det mulig å legge til egne geojson-filer til nettsida via en annen knapp i sidebaren som åpner filutforskeren til brukeren. Det forutsetter da at en har filer på rett format. Dette kan skaffes via følgende fremgangsmåte:
+Else is it possible to add your own geojson files to the webpage via  a button in the sidebar that opens the file explorer for the user. This presupposes that the user has files in the correct format. This could be obtained through the following procedure for data from Norway:
 
-- Last ned ønskede datasett fra geonorge.no på SOSI-format
-- Benytt SOSI2Shape for å konvertere SOSI-filer til shape-filer
-- Åpne shape-filene i QGIS og sett koordinatsystemet til kartet til samme som datalagene (UTM 32N, 33N eller 35N for Norge)
-- Klipp ut et utsnitt av datasettene om ønskelig
-- Eksporter datalagene som geojson og CRS: 4326 - globalt lengde- og breddegradssystem
+- Download desired data sets from geonorge.no in SOSI-format
+- Use SOSI2Shape to convert SOSI files to shape files
+- Open the shape files in QGIS and define the coordinate system to the map to the same as the data sets (UTM 32N, 33N or 35N in Norway)
+- Clip out a section of the data if desired
+- Export the data layers to geojson with CRS: 4326 - global latitude and longditude system
 
-Filen du nå får kan legges inn i ProgGIS via legg til-knappene i sidebaren.
+The file you now obtaine can be uploaded to ProgGIS via a button in the sidebar.
 
-## Eventuelt
+## Possible errors
 
-Ved store eller komplekse datasett kan enkelte operasjoner ta en del tid, eventuelt ikke fungere i det hele tatt. Nettsidens funksjoner har en rekke sjekker for å sørge for at all dataen til enhver tid er gyldig i hele applikasjonen. Disse testene skal ta for seg de fleste tilfeller, men muligens ikke alle.
+With large or complex data sets can some operations take some time, or maybe do not work at all. The functions of the webpage have a lot of checks to provide that all the data always are valid in the whole application. These tests should take care of most of the cases, but possibly not all.
 
-Enkelte verdier på parametre i noen av funksjonene nevnt under 'Hvordan fungerer det?' kan føre til feilmeldinger eller ingen respons i systemet, men dette forekommer svært sjeldent.
+Some values on parametres in some of the functions mentioned under 'How does it work?' can result in error messages or no response in the system, but this occurs very rarely.
 
 ##
 
-Så da ønsker jeg bare god fornøyelse, og lykke til!
+Then I only wish you good fun, and good luck!
 
 Jakob S. S. Hjelseth

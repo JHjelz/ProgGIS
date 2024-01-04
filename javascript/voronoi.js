@@ -31,6 +31,9 @@ function voronoi() {  // Skrur av og på voronoi-diagrammet i kartet
 }
 
 function findMinMax() {
+    
+    // Funksjon som finner hjørnekoordinatene til avgrensningene av voronoi-diagrammet
+    
     var [minlon, minlat, maxlon, maxlat] = [99, 99, -99, -99];
     
     for (feature in points.toGeoJSON().features) {
@@ -47,5 +50,5 @@ function findMinMax() {
             maxlat = points.toGeoJSON().features[feature].geometry.coordinates[1];
         }
     }
-    return [minlon - 0.5, minlat - 0.5, maxlon + 0.5, maxlat + 0.5];
+    return [minlon - 0.01, minlat - 0.01, maxlon + 0.01, maxlat + 0.01];
 }

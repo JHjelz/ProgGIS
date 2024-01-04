@@ -51,7 +51,8 @@ function makeBuffer() {
         
         updateSidebar(); // Oppdaterer sidebaren
         handleLayer(name); // Viser laget i kartet
-        document.getElementById("bufferDistance").value = ""; // Tilbakestiller input-feltene fra brukeren
+        // Tilbakestiller input-feltene fra brukeren:
+        document.getElementById("bufferDistance").value = "";
         document.getElementById("bufferName").value = "";
         fillSelect("bufferSelect");
     } catch(failure) { // Hvis det ikke går å lage buffer, sendes det en feilmelding

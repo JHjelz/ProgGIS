@@ -2,15 +2,6 @@
 Justere utseende til nettsiden
 */
 
-.standard {
-    font-family: monospace;
-    margin: 0;
-}
-
-p {
-    font-size: 18px;
-}
-
 .box {
     font-family: monospace;
     background-color: orange;
@@ -52,12 +43,18 @@ p {
     flex-direction: row;
 }
 
+.boxContent {
+    height: 24vh;
+    overflow-y: scroll;
+}
+
 .button {
     font-family: monospace;
     font-weight: bolder;
     background-color: orangered;
     color: white;
     border: 0;
+    border-radius: 10px;
     cursor: pointer;
     padding-left: 2vw;
     padding-right: 2vw;
@@ -65,6 +62,16 @@ p {
     margin-right: 2vw;
     margin-top: 0.5vh;
     margin-bottom: 0.5vh;
+}
+
+#fileInput {
+    display: none;
+}
+
+.input_standard {
+    border-color: orangered;
+    border-radius: 20px;
+    border-width: 2px;
 }
 
 .onClick {
@@ -83,6 +90,10 @@ p {
     cursor: pointer;
 }
 
+p {
+    font-size: 18px;
+}
+
 .sidebar {
     font-family: monospace;
     background-color: orangered;
@@ -93,10 +104,6 @@ p {
     height: 80vh;
     overflow-x: hidden;
     transition: 0.5s;
-}
-
-#fileInput {
-    display: none;
 }
 
 .sidebarButton {
@@ -114,11 +121,17 @@ p {
     cursor: pointer;
 }
 
+.standard {
+    font-family: monospace;
+    margin: 0;
+}
+
 .tutorial {
     margin: 5px;
     padding: 5px;
     color: white;
-    height: 26vh;
+    height: 23.5vh;
     width: 39vw;
     text-align: center;
+    overflow-y: scroll;
 }

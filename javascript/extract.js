@@ -11,22 +11,24 @@ document.getElementById("extractSelect").addEventListener("change", () => {
         select.innerHTML = "";
         select.add(new Option(text="- - -"));
     } else { // Er det valgt noe, fylles neste med tilhørende verdier
-        var layer = overlayMaps[input].toGeoJSON();
+        var layer = overlayMaps[input].toGeoJSON(); // Henter valgt kartlag
 
-        var features = [];
+        var features = []; // Liste med features
         
         for (element in layer["features"]) {
             for (key in layer["features"][element]["properties"]) {
                 if (!features.includes(key)) {
-                    features.push(key);
+                    features.push(key); // Legger til alle features som ikke er i lista allerede
                 }
             }
         }
         
+        // Setter opp select-objektet:
         var select = document.getElementById("featureSelect");
         select.innerHTML = "";
         select.add(new Option(text="- - -"));
 
+        // Fyller select-objektet med features fra features-lista:
         for (var i = 0; i < features.length; i++) {
             select.add(new Option(text = features[i], value = features[i]));
         }

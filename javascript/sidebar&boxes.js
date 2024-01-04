@@ -43,6 +43,9 @@ function openBox(id) { // Åpner aktuell boks (id)
         }
     } else if (id == "unionBox") {
         fillDoubleSelect("unionSelect");
+    } else if (id == "tutorialBox") {
+        setPage();
+        start();
     }
     
     document.getElementById(String(id)).style.width = "40vw";
@@ -54,6 +57,9 @@ function openBox(id) { // Åpner aktuell boks (id)
 }
 
 function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva openBox gjør
+    if (id == "tutorialBox") {
+        page = 0;
+    }
     document.getElementById(String(id)).style.width = "0vw";
     document.getElementById(String(id)).style.height = "0vh";
     document.getElementById(String(id)).style.borderWidth = "0px";
@@ -64,7 +70,7 @@ function closeBox(id) { // Lukker aktuell boks og justerer siden motsatt av hva 
 
 // Fyller select i de ulike boksene med alternativ:
 
-function isPolygon(layer) {
+function isPolygon(layer) { // Funksjon som sjekker om et kartlag består av polygoner
     var objects = layer["features"];
     for (o of objects) {
         if (o["geometry"]["type"] == "Polygon") {
@@ -80,16 +86,18 @@ function fillSelect(id) {
     select.add(new Option(text="- - -"));
     
     for (key in overlayMaps) {
+        // Bokser som tollererer alle typer objekt:
         if (id == "bufferSelect" || id == "extractSelect") {
             select.add(new Option(text = key, value = key));
         }
+        // Bokser som kun godkjenner polygon:
         else if (isPolygon(overlayMaps[key].toGeoJSON())) {
             select.add(new Option(text = key, value = key));
         }
     }
 }
 
-function fillDoubleSelect(id) {
+function fillDoubleSelect(id) { // For de boksene som har to select-element i seg
     var select1 = document.getElementById(id + "_1");
     var select2 = document.getElementById(id + "_2");
     select1.innerHTML = "";
@@ -98,7 +106,7 @@ function fillDoubleSelect(id) {
     select2.add(new Option(text="- - -"));
 
     for (key in overlayMaps) {
-        if (isPolygon(overlayMaps[key].toGeoJSON())) {
+        if (isPolygon(overlayMaps[key].toGeoJSON())) { // Sjekker at det er polygon
             select1.add(new Option(text = key, value = key));
             select2.add(new Option(text = key, value = key));
         }

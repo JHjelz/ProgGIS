@@ -22,7 +22,7 @@ function changeMap() {
     document.getElementById("buttons1").style.display = "none";
     document.getElementById("buttons2").style.display = "flex";
 
-    // Endrer knappene nedrest til høyre i kartet:
+    // Endrer knappene nederst til venstre i kartet:
     document.getElementById("sidebarOpener").style.display = "none";
     document.getElementById("pointOpener").style.display = "block";
     document.getElementById("addPointButton").style.display = "block";
@@ -32,7 +32,7 @@ function changeMap() {
       var layer = overlayMaps[key];
       if (map.hasLayer(layer)) {
         handleLayer(key);
-        layersOnMap.push(key);
+        layersOnMap.push(key); // ... og lagrer dem til senere
       }
     }
   } else if (m == "m2") {
@@ -49,7 +49,7 @@ function changeMap() {
     document.getElementById("showPoints").style.display = "none";
     document.getElementById("hidePoints").style.display = "none";
 
-    // Fjerner punkt-markørene og eventuelle voronoi- og TIN-diagram fra kartet:
+    // Fjerner punkt-markørene og eventuelle andre kartlag fra kartet:
     if (isVoronoi) {
       voronoi();
     }
@@ -66,12 +66,10 @@ function changeMap() {
     }
 
     if (points != null) {
-      if (points != null) {
-          if (!map.hasLayer(points)) {
-            points.addTo(map);
-          }
-          handleDefaultPoints();
-      }
+        if (!map.hasLayer(points)) {
+          points.addTo(map);
+        }
+        handleDefaultPoints();
     }
 
     // Legger til kartlagene som lå i kartet før en byttet kartmodus:
