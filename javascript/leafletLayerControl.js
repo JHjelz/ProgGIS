@@ -1,6 +1,6 @@
 // Layer control:
 
-var baselayers = {
+var baselayers = { // Dictionary med basiskartene (bakgrunnskart)
     "OpenStreetMap": osm_map,
     "Satellite": googleSat
 }
@@ -38,8 +38,9 @@ function updateSidebar() {
     */
     for (key in overlayMaps) {
         if (!addedLayers.includes(key)) {
-            addedLayers.push(key);
+            addedLayers.push(key); // Legger til kartet i oversikten
 
+            // Lager aktuelle knapper for funksjonalitet koblet til kartlaget:
             var layerDiv = document.createElement("div");
             var start = `<div id=${key + '_1'} style="position: flex; flex-grow: 3; flex-direction: row;">`;
             var button = `<button id=${key} class='sidebarButton' onclick='handleLayer("${key}")'>${key}</button>`;
@@ -48,26 +49,28 @@ function updateSidebar() {
             var end = '</div>';
             layerDiv.innerHTML = start + button + paintB + deleteB + end;
 
+            // Kobler HTML-elementene sammen:
             container = document.getElementById("layers");
             container.appendChild(layerDiv);
         }
     }
 }
 
-function deleteMapLayer(name) {
-    map.removeLayer(overlayMaps[name]);
-    delete overlayMaps[name];
+function deleteMapLayer(name) { // Sletter kartlaget
+    map.removeLayer(overlayMaps[name]); // Fjerner kartlaget fra kartet
+    delete overlayMaps[name]; // Fjerner kartlaget fra dictionaryen
+    // Henter og fjerner HTML-objektet fra sida:
     addedLayers.splice(addedLayers.indexOf(name), 1);
     var div = document.getElementById(name + '_1');
     if (div) {
         div.parentNode.removeChild(div);
     }
-    checkExampleData();
+    checkExampleData(); // Sjekker om noe av eksempeldataen fremdeles er lastet inn
 }
 
-function checkExampleData() {
+function checkExampleData() { // Sjekker om noe av eksempeldataen er lastet inn i kartet
     var count = 0;
-    for (key in overlayMaps) {
+    for (key in overlayMaps) { // Sjekker alle nøklene til kartlagene med eksempeldataen
         if (key == "Arealdekke") {
             count += 1;
         } else if (key == "Bygg_f") {
@@ -78,13 +81,14 @@ function checkExampleData() {
             count += 1;
         }
 
-        if (count > 0) {
+        if (count > 0) { // Hvis ett (eller flere) lag er lastet inn gjøres det ikke noe
             return;
         }
     }
 
+    // Ellers må en si ifra om at all eksempeldata er slettet ...
     exampleLoaded = false;
-    document.getElementById("exampleData").style.display = "block";
+    document.getElementById("exampleData").style.display = "block"; // ... og vise knappen som gjør det mulig å laste de inn på nytt
     document.getElementById("layers").style.height = "52vh";
 }
 
@@ -93,7 +97,7 @@ function handleLayer(name) { // Funksjon som viser og skjuler kartlag i kartet o
 
     for (key in overlayMaps) {
         if (key == name) {
-            layer = overlayMaps[key];
+            layer = overlayMaps[key]; // Henter aktuelt kartlag
             break;
         }
     }
@@ -102,12 +106,12 @@ function handleLayer(name) { // Funksjon som viser og skjuler kartlag i kartet o
         return;
     }
 
-    if (map.hasLayer(layer)) {
-        map.removeLayer(layer);
-        document.getElementById(name).style.backgroundColor = "black";
+    if (map.hasLayer(layer)) { // Hvis kartlaget vises i kartet...
+        map.removeLayer(layer); // ... fjern det
+        document.getElementById(name).style.backgroundColor = "black"; // ... og endre fargen på knappen til 'Sort' = 'Ikke synlig'
       } else {
-        map.addLayer(layer);
-        document.getElementById(name).style.backgroundColor = "green";
+        map.addLayer(layer); // Ellers, legg til kartlaget
+        document.getElementById(name).style.backgroundColor = "green"; // ... og endre fargen på knappen til 'Grønn' = 'Synlig'
       }
 }
 
