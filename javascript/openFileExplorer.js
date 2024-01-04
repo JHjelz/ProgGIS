@@ -7,6 +7,6 @@ function clickMe() { // Funksjonen som åpner filutforskeren
 }
 
 dialog.addEventListener('change', () => {
-    // EventListner som endrer farge på html-knappen når en fil er valgt
+    // EventListner som endrer farge på HTML-knappen når en fil er valgt
     document.getElementById("loadButton").style.backgroundColor = "green";
 })

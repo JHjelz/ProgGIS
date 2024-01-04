@@ -3,7 +3,7 @@
     <head>
         <title>ProgGIS</title>
         
-        <!-- My css -->
+        <!-- Min css -->
         <link rel="stylesheet" href="css/style.css"/>
         
         <!-- Leaflet css -->
@@ -12,15 +12,17 @@
         <!-- Turfjs -->
         <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
 
-        <!-- Coloring the map layers -->
+        <!-- Fargelegger de ulike kartlagene -->
         <script src="javascript/colors.js"></script>
 
     </head>
     
     <body class="standard">
         
+        <!-- Header -->
+
         <div class="box2" style="height: 20vh; background-color: orange; color: white;">
-            <svg style="padding-left: 2vh; padding-top: 2vh;"
+            <svg style="padding-left: 2vh; padding-top: 2vh; color: green;"
             xmlns="http://www.w3.org/2000/svg" width="16vh" height="16vh" fill="currentColor" class="bi bi-globe-europe-africa" viewBox="0 0 16 16">
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM3.668 2.501l-.288.646a.847.847 0 0 0 1.479.815l.245-.368a.809.809 0 0 1 1.034-.275.809.809 0 0 0 .724 0l.261-.13a1 1 0 0 1 .775-.05l.984.34c.078.028.16.044.243.054.784.093.855.377.694.801-.155.41-.616.617-1.035.487l-.01-.003C8.274 4.663 7.748 4.5 6 4.5 4.8 4.5 3.5 5.62 3.5 7c0 1.96.826 2.166 1.696 2.382.46.115.935.233 1.304.618.449.467.393 1.181.339 1.877C6.755 12.96 6.674 14 8.5 14c1.75 0 3-3.5 3-4.5 0-.262.208-.468.444-.7.396-.392.87-.86.556-1.8-.097-.291-.396-.568-.641-.756-.174-.133-.207-.396-.052-.551a.333.333 0 0 1 .42-.042l1.085.724c.11.072.255.058.348-.035.15-.15.415-.083.489.117.16.43.445 1.05.849 1.357L15 8A7 7 0 1 1 3.668 2.501Z"/>
             </svg>
@@ -45,12 +47,14 @@
                 </div>
             </div>
             
-            <svg style="padding-right: 2vh; padding-top: 2vh;"
+            <svg style="padding-right: 2vh; padding-top: 2vh; color: green;"
             xmlns="http://www.w3.org/2000/svg" width="16vh" height="16vh" fill="currentColor" class="bi bi-globe-asia-australia" viewBox="0 0 16 16">
                 <path d="m10.495 6.92 1.278-.619a.483.483 0 0 0 .126-.782c-.252-.244-.682-.139-.932.107-.23.226-.513.373-.816.53l-.102.054c-.338.178-.264.626.1.736a.476.476 0 0 0 .346-.027ZM7.741 9.808V9.78a.413.413 0 1 1 .783.183l-.22.443a.602.602 0 0 1-.12.167l-.193.185a.36.36 0 1 1-.5-.516l.112-.108a.453.453 0 0 0 .138-.326ZM5.672 12.5l.482.233A.386.386 0 1 0 6.32 12h-.416a.702.702 0 0 1-.419-.139l-.277-.206a.302.302 0 1 0-.298.52l.761.325Z"/>
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM1.612 10.867l.756-1.288a1 1 0 0 1 1.545-.225l1.074 1.005a.986.986 0 0 0 1.36-.011l.038-.037a.882.882 0 0 0 .26-.755c-.075-.548.37-1.033.92-1.099.728-.086 1.587-.324 1.728-.957.086-.386-.114-.83-.361-1.2-.207-.312 0-.8.374-.8.123 0 .24-.055.318-.15l.393-.474c.196-.237.491-.368.797-.403.554-.064 1.407-.277 1.583-.973.098-.391-.192-.634-.484-.88-.254-.212-.51-.426-.515-.741a6.998 6.998 0 0 1 3.425 7.692 1.015 1.015 0 0 0-.087-.063l-.316-.204a1 1 0 0 0-.977-.06l-.169.082a1 1 0 0 1-.741.051l-1.021-.329A1 1 0 0 0 11.205 9h-.165a1 1 0 0 0-.945.674l-.172.499a1 1 0 0 1-.404.514l-.802.518a1 1 0 0 0-.458.84v.455a1 1 0 0 0 1 1h.257a1 1 0 0 1 .542.16l.762.49a.998.998 0 0 0 .283.126 7.001 7.001 0 0 1-9.49-3.409Z"/>
             </svg>
         </div>
+
+        <!-- Sidebar -->
 
         <div id="dataLayers" class="sidebar">
             <div class="box3" style="margin-left: 1vw;">
@@ -80,9 +84,11 @@
             <div id="layers" style="font-family: monospace; margin-left: 1vw; margin-top: 2vh; font-size: 18px; height: 52vh; overflow-y: scroll;"></div>
         </div>
         
+        <!-- Kartet med alle funksjonene -->
+
         <div id="map" style="position: relative; z-index: 1; height: 80vh;">
             <div style="display: flex; flex-grow: 2; flex-direction: column;">
-                <div style="height: 72vh;">
+                <div style="height: 72vh;"> <!-- Bokser -->
                     <div id="bufferBox" class="box">
                         <div class="box3">
                             <h1 style="font-size: 4vh; text-align: center; width: 36vw;">Buffer</h1>
@@ -93,16 +99,18 @@
                             </svg>
                         </div>
 
-                        <p>Choose a layer to create a buffer around:</p>
-                        <select id="bufferSelect"></select>
-                        
-                        <p>Write the distance you want for the buffer (in meter):</p>
-                        <input id="bufferDistance">
-                        
-                        <p>Choose a name for the new buffer:</p>
-                        <input id="bufferName"><br>
+                        <div class="boxContent">
+                            <p>Choose a layer to create a buffer around:</p>
+                            <select id="bufferSelect" class="input_standard"></select>
+                            
+                            <p>Write the distance you want for the buffer (in meter):</p>
+                            <input id="bufferDistance" class="input_standard">
+                            
+                            <p>Choose a name for the new buffer:</p>
+                            <input id="bufferName" class="input_standard"><br>
 
-                        <p>Do you want to dissolve the buffers? <input type="checkbox" id="bufferCheck"></p>
+                            <p>Do you want to dissolve the buffers? <input type="checkbox" id="bufferCheck"></p>
+                        </div>
 
                         <button class="button" style="font-size: 25px;" onclick="makeBuffer()">Make buffer</button>
                     </div>
@@ -117,14 +125,16 @@
                             </svg>
                         </div>
 
-                        <p>Which layer do you want to remove areas from:</p>
-                        <select id="differenceSelect_1"></select>
+                        <div class="boxContent">
+                            <p>Which layer do you want to remove areas from:</p>
+                            <select id="differenceSelect_1" class="input_standard"></select>
 
-                        <p>Which layer do you want to remove from the first one:</p>
-                        <select id="differenceSelect_2"></select>
+                            <p>Which layer do you want to remove from the first one:</p>
+                            <select id="differenceSelect_2" class="input_standard"></select>
 
-                        <p>Choose a name for the new layer:</p>
-                        <input id="differenceName"><br>
+                            <p>Choose a name for the new layer:</p>
+                            <input id="differenceName" class="input_standard"><br>
+                        </div>
 
                         <button class="button" style="font-size: 25px;" onclick="makeDifference()">Make difference</button>
                     </div>
@@ -140,10 +150,10 @@
                         </div>
 
                         <p>Choose a layer to dissolve:</p>
-                        <select id="dissolveSelect"></select>
+                        <select id="dissolveSelect" class="input_standard"></select>
 
                         <p>Choose a name for the new dissolved layer:</p>
-                        <input id="dissolveName"><br>
+                        <input id="dissolveName" class="input_standard"><br>
 
                         <button class="button" style="font-size: 25px;" onclick="doDissolve()">Dissolve</button>
                     </div>
@@ -158,17 +168,19 @@
                             </svg>
                         </div>
 
-                        <p>Choose a layer to extract features from:</p>
-                        <select id="extractSelect"></select>
+                        <div class="boxContent">
+                            <p>Choose a layer to extract features from:</p>
+                            <select id="extractSelect" class="input_standard"></select>
 
-                        <p>Which attribute will you extract to a new layer:</p>
-                        <select id="featureSelect"></select>
+                            <p>Which attribute will you extract to a new layer:</p>
+                            <select id="featureSelect" class="input_standard"></select>
 
-                        <p>Which value will you sort out:</p>
-                        <select id="valueSelect"></select>
+                            <p>Which value will you sort out:</p>
+                            <select id="valueSelect" class="input_standard"></select>
 
-                        <p>Choose a name for the new layer:</p>
-                        <input id="extractName"><br>
+                            <p>Choose a name for the new layer:</p>
+                            <input id="extractName" class="input_standard"><br>
+                        </div>
 
                         <button class="button" style="font-size: 25px;" onclick="doExtract()">Extract</button>
                     </div>
@@ -183,14 +195,16 @@
                             </svg>
                         </div>
 
-                        <p>Choose the first layer to intersect:</p>
-                        <select id="intersectionSelect_1"></select>
+                        <div class="boxContent">
+                            <p>Choose the first layer to intersect:</p>
+                            <select id="intersectionSelect_1" class="input_standard"></select>
 
-                        <p>Choose the second layer:</p>
-                        <select id="intersectionSelect_2"></select>
+                            <p>Choose the second layer:</p>
+                            <select id="intersectionSelect_2" class="input_standard"></select>
 
-                        <p>Choose a name for the intersection:</p>
-                        <input id="intersectionName"><br>
+                            <p>Choose a name for the intersection:</p>
+                            <input id="intersectionName" class="input_standard"><br>
+                        </div>
 
                         <button class="button" style="font-size: 25px;" onclick="makeIntersection()">Intersect</button>
                     </div>
@@ -205,24 +219,26 @@
                             </svg>
                         </div>
                         
-                        <p>Choose map layers in prioritised order:</p>
-                        
-                        <div id="priorityDiv">
-                            <div style="display: flex; justify-content: center;">
-                                <select id="priority1"></select>
+                        <div class="boxContent">
+                            <p>Choose map layers in prioritised order:</p>
+                            
+                            <div id="priorityDiv">
+                                <div style="display: flex; justify-content: center;">
+                                    <select id="priority1" class="input_standard"></select>
 
-                                <svg onclick="addPrioritizedLayer()" style="cursor: pointer; margin-left: 1vw;" xmlns="http://www.w3.org/2000/svg" 
-                                width="3vh" height="3vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                </svg>
+                                    <svg onclick="addPrioritizedLayer()" style="cursor: pointer; margin-left: 1vw;" xmlns="http://www.w3.org/2000/svg" 
+                                    width="3vh" height="3vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </div>
                             </div>
+
+                            <p>Give this suitability analyse a cathegory name:</p>
+
+                            <input id="suitabilityName" class="input_standard"><br>
                         </div>
 
-                        <p>Give this suitability analyse a cathegory name:</p>
-
-                        <input id="suitabilityName"><br>
-
-                        <button class="button" style="font-size: 25px; margin-top: 4vh;" onclick="suitability()">Calculate suitable areas</button>
+                        <button class="button" style="font-size: 25px;" onclick="suitability()">Calculate suitable areas</button>
                     </div>
 
                     <div id="unionBox" class="box">
@@ -235,14 +251,16 @@
                             </svg>
                         </div>
 
-                        <p>Choose the first layer to union:</p>
-                        <select id="unionSelect_1"></select>
+                        <div class="boxContent">
+                            <p>Choose the first layer to union:</p>
+                            <select id="unionSelect_1" class="input_standard"></select>
 
-                        <p>Choose the second layer:</p>
-                        <select id="unionSelect_2"></select>
+                            <p>Choose the second layer:</p>
+                            <select id="unionSelect_2" class="input_standard"></select>
 
-                        <p>Choose a name for the union:</p>
-                        <input id="unionName"><br>
+                            <p>Choose a name for the union:</p>
+                            <input id="unionName" class="input_standard"><br>
+                        </div>
 
                         <button class="button" style="font-size: 25px;" onclick="makeUnion()">Make union</button>
                     </div>
@@ -270,6 +288,7 @@
                         </div>
                         
                         <p id="tutorial" class="tutorial"></p>
+                        <p id="page" style="margin: 0; padding: 0;"></p>
                     </div>
 
                     <div id="loadPointsBox" class="box">
@@ -288,7 +307,7 @@
                         <button id="loadPoints" class="onClick" style="margin-top: 2vh; line-height: 10vh;" onclick="loadPoints()">Load points from file</button>
 
                         <p id="savePoints" style="display: none; margin-top: 2vh;">Save points to file</p><br>
-                        <input id="fileName" style="display: none;"><br>
+                        <input id="fileName" style="display: none;" class="input_standard"><br>
                         <button id="save" class="onClick" style="display: none; margin-top: 2vh;" onclick="saveToFile()">Save</button>
 
                         <button id="removePoints" class="onClick" style="margin-top: 2vh; line-height: 10vh; display: none;" onclick="handleDefaultPoints()">Remove current points</button>
@@ -304,11 +323,11 @@
                             </svg>
                         </div>
 
-                        <p>Lengdegrader: <input id="lengdegrader" readonly></p> <!-- 10.xxx -->
-                        <p>Breddegrader: <input id="breddegrader" readonly></p> <!-- 6x.xxx -->
+                        <p>Lengdegrader: <input id="lengdegrader" readonly class="input_standard"></p> <!-- 10.xxx -->
+                        <p>Breddegrader: <input id="breddegrader" readonly class="input_standard"></p> <!-- 6x.xxx -->
 
-                        <p>Set category: <input id="pointCategory"></p>
-                        <p>Set name: <input id="pointName"></p>
+                        <p>Set category: <input id="pointCategory" class="input_standard"></p>
+                        <p>Set name: <input id="pointName" class="input_standard"></p>
 
                         <button id="savePoint" class="onClick" style="margin-top: 2vh;" onclick="savePoint()">Save point</button>
                     </div>
@@ -323,28 +342,28 @@
                             </svg>
                         </div>
 
-                        <p>Map layer: <input id="layerNameColor" readonly></p>
+                        <p>Map layer: <input id="layerNameColor" readonly class="input_standard"></p>
 
                         <label for="R">R</label>
                         <input type="range" id="R" name="R" min="0" max="255" step="1" onchange="updateValue('R')">
-                        <input type="text" id="RText" readonly>
+                        <input type="text" id="RText" readonly class="input_standard">
                         <br>
 
                         <label for="G">G</label>
                         <input type="range" id="G" name="G" min="0" max="255" step="1" onchange="updateValue('G')">
-                        <input type="text" id="GText" readonly>
+                        <input type="text" id="GText" readonly class="input_standard">
                         <br>
 
                         <label for="B">B</label>
                         <input type="range" id="B" name="B" min="0" max="255" step="1" onchange="updateValue('B')">
-                        <input type="text" id="BText" readonly>
+                        <input type="text" id="BText" readonly class="input_standard">
                         <br>
 
                         <button id="paintLayer" class="onClick" style="margin-top: 5vh;" onclick="paint()">Paint</button>
                     </div>
                 </div>
 
-                <div class="box2">
+                <div class="box2"> <!-- Knapper -->
                     <div style="padding-left: 2vw;">
                         <svg id="sidebarOpener" style="cursor: pointer; border: none; position: absolute; color: orangered; z-index: 999;" onclick="openNav()"
                         xmlns="http://www.w3.org/2000/svg" width="6vh" height="6vh" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -395,15 +414,15 @@
         <!-- Leaflet js -->
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-        <!-- Saving files -->
+        <!-- Lagre filer -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
 
         <!-- Heatmap -->
         <script src="javascript/leaflet-heat.js"></script>
 
-        <!-- My js -->
+        <!-- Min js -->
 
-        <!-- General -->
+        <!-- Generelt -->
 
         <script src="javascript/map.js"></script>
         <script src="javascript/sidebar&boxes.js"></script>
@@ -414,7 +433,7 @@
         <script src="javascript/tutorial.js"></script>
         <script src="javascript/fileHandler.js"></script>
 
-        <!-- Map functions -->
+        <!-- Funksjonalitet for kartet -->
         
         <script src="javascript/buffer.js"></script>
         <script src="javascript/dissolve.js"></script>
@@ -424,7 +443,7 @@
         <script src="javascript/extract.js"></script>
         <script src="javascript/suitability.js"></script>
         
-        <!-- Map change -->
+        <!-- Kartbytte -->
 
         <script src="javascript/mapChange.js"></script>
         <script src="javascript/pointMap.js"></script>
