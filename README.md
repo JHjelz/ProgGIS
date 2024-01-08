@@ -8,7 +8,7 @@ ProgGIS is a basic GIS-platform suitable for learning what a GIS is and how it w
 
 ## How does it work?
 
-The platform is reached through the link: https://jshjelse.pages.stud.idi.ntnu.no/proggis/
+The platform is reached through the link: https://jhjelz.github.io/ProgGIS/
 
 The webpage consists of a header with several buttons and a large map covering almost the whole page. Around the page do there exist a lot of buttons with different functionality, including a tutorial that describes all functionality of the page. The GIS functions arranged on the webpage is as follow:
 
