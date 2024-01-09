@@ -112,6 +112,8 @@ function suitability() { // Faktisk egnethetsanalyse
                 }
             }
             catch {
+                console.log(i);
+                console.log(j);
                 continue;
             }
         }
