@@ -107,6 +107,9 @@ function suitability() { // Faktisk egnethetsanalyse
 
             try {
                 newLayers[i] = turf.difference(a, b); // Laget med høyest prioritet bevares, mens det med lavere slettes bort
+                if (isMultiPolygon(newLayers[i])) {
+                    newLayers[i] = multiPolygonToFeatureCollection(newLayers[i]);
+                }
             }
             catch {
                 continue;
